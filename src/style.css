@@ -1,3 +1,14 @@
 body {
   font-family: sans-serif;
 }
+
+table {
+  border: 1px solid;
+  max-width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid;
+  padding: 5px;
+}

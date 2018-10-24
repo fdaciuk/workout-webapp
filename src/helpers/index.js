@@ -10,3 +10,5 @@ export const http = {
     })
   }
 }
+
+export { default as videos } from './videos'

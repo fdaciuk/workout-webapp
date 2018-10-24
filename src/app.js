@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { http, to } from './helpers'
+import React, { PureComponent, Fragment } from 'react'
+import { http, to, videos } from './helpers'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
+import Aerobic from './aerobic'
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     training: null,
     advancedTechnique: null
@@ -13,8 +14,9 @@ class App extends Component {
     e.preventDefault()
     const [err, training] = await to(http.get(`http://localhost:4000/?user=${user}`))
     if (err) {
-      this.setState({ training: null })
       console.log('ERR:', err)
+      this.setState({ training: null })
+      return
     }
     this.setState({ training })
   }
@@ -25,6 +27,11 @@ class App extends Component {
 
   closeModal = () => {
     this.setState({ advancedTechnique: null })
+  }
+
+  getVideo = (exercise) => {
+    const ex = Object.keys(videos).find((v) => v.includes(exercise.trim()))
+    return videos[ex]
   }
 
   render () {
@@ -40,7 +47,12 @@ class App extends Component {
           <ListTraining
             training={this.state.training}
             openAdvancedTechnique={this.openAdvancedTechnique}
+            getVideo={this.getVideo}
           />
+        }
+
+        {this.state.training && this.state.training.aerobic &&
+          <Aerobic days={this.state.training.aerobic} />
         }
 
         {this.state.advancedTechnique &&
