@@ -9,7 +9,7 @@
     "react-scripts": "2.0.5"
   },
   "scripts": {
-    "dev": "BROWSER=opera react-scripts start",
+    "dev": "BROWSER=null react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

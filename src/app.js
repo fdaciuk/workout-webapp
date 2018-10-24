@@ -10,17 +10,6 @@ class App extends PureComponent {
     advancedTechnique: null
   }
 
-  getTraining = (user) => async (e) => {
-    e.preventDefault()
-    const [err, training] = await to(http.get(`http://localhost:4000/?user=${user}`))
-    if (err) {
-      console.log('ERR:', err)
-      this.setState({ training: null })
-      return
-    }
-    this.setState({ training })
-  }
-
   openAdvancedTechnique = (technique) => (e) => {
     this.setState({ advancedTechnique: technique })
   }
@@ -34,14 +23,28 @@ class App extends PureComponent {
     return videos[ex]
   }
 
+  handleUpload = async (e) => {
+    e.preventDefault()
+    const file = e.target.files[0]
+    let data = new FormData()
+    data.append('file', file)
+
+    const [err, training] = await to(http.upload('http://localhost:4000', data))
+    if (err) {
+      console.log('ERR:', err)
+      this.setState({ training: null })
+      return
+    }
+    this.setState({ training })
+  }
+
   render () {
     return (
       <Fragment>
         <h1>Treino</h1>
-        <ul>
-          <li><button onClick={this.getTraining('ale')}>Treino Ale</button></li>
-          <li><button onClick={this.getTraining('fer')}>Treino Fer</button></li>
-        </ul>
+
+        <h2>Selecione seu treino (arquivo .xlsx):</h2>
+        <input type='file' onChange={this.handleUpload} />
 
         {this.state.training &&
           <ListTraining
