@@ -12,3 +12,15 @@ table th {
   border: 1px solid;
   padding: 5px;
 }
+
+.select-training {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.select-training label {
+  display: block;
+  margin-bottom: 10px;
+}

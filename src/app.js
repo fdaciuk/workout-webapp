@@ -32,10 +32,17 @@ class App extends PureComponent {
     const [err, training] = await to(http.upload(process.env.REACT_APP_BACKEND, data))
     if (err) {
       console.log('ERR:', err)
-      this.setState({ training: null })
       return
     }
     this.setState({ training })
+    localStorage.setItem('training', JSON.stringify(training))
+  }
+
+  componentDidMount () {
+    const training = localStorage.getItem('training')
+    if (training) {
+      this.setState({ training: JSON.parse(training) })
+    }
   }
 
   render () {
@@ -43,8 +50,10 @@ class App extends PureComponent {
       <Fragment>
         <h1>Treino</h1>
 
-        <h2>Selecione seu treino (arquivo .xlsx):</h2>
-        <input type='file' onChange={this.handleUpload} />
+        <div className='select-training'>
+          <label>Selecione seu treino (arquivo .xlsx):</label>
+          <input type='file' onChange={this.handleUpload} />
+        </div>
 
         {this.state.training &&
           <ListTraining
