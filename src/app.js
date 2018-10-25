@@ -29,7 +29,7 @@ class App extends PureComponent {
     let data = new FormData()
     data.append('file', file)
 
-    const [err, training] = await to(http.upload('http://localhost:4000', data))
+    const [err, training] = await to(http.upload(process.env.REACT_APP_BACKEND, data))
     if (err) {
       console.log('ERR:', err)
       this.setState({ training: null })
