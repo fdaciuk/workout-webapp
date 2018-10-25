@@ -7,7 +7,9 @@ import Aerobic from './aerobic'
 class App extends PureComponent {
   state = {
     training: null,
-    advancedTechnique: null
+    advancedTechnique: null,
+    isFetching: false,
+    error: false
   }
 
   openAdvancedTechnique = (technique) => (e) => {
@@ -29,18 +31,22 @@ class App extends PureComponent {
     let data = new FormData()
     data.append('file', file)
 
+    this.setState({ isFetching: true })
     const [err, training] = await to(http.upload(process.env.REACT_APP_BACKEND, data))
-    if (err) {
-      console.log('ERR:', err)
+    this.setState({ isFetching: false })
+    if (err || !training) {
+      console.log('ERR:', err, training)
+      this.setState({ error: true })
       return
     }
-    this.setState({ training })
+
+    this.setState({ training, error: false })
     localStorage.setItem('training', JSON.stringify(training))
   }
 
   componentDidMount () {
     const training = localStorage.getItem('training')
-    if (training) {
+    if (training && training !== 'undefined') {
       this.setState({ training: JSON.parse(training) })
     }
   }
@@ -55,24 +61,37 @@ class App extends PureComponent {
           <input type='file' onChange={this.handleUpload} />
         </div>
 
-        {this.state.training &&
+        {this.state.isFetching && (
+          <div className='loading-message'>
+            Buscando informações do seu treino...
+          </div>
+        )}
+
+        {this.state.error && (
+          <div className='error-message'>
+            <h2>Deu problema :(</h2>
+            <p>Por favor, tente novamente mais tarde.</p>
+          </div>
+        )}
+
+        {this.state.training && (
           <ListTraining
             training={this.state.training}
             openAdvancedTechnique={this.openAdvancedTechnique}
             getVideo={this.getVideo}
           />
-        }
+        )}
 
-        {this.state.training && this.state.training.aerobic &&
+        {this.state.training && this.state.training.aerobic && (
           <Aerobic days={this.state.training.aerobic} />
-        }
+        )}
 
-        {this.state.advancedTechnique &&
+        {this.state.advancedTechnique && (
           <ModalAdvancedTechnique
             technique={this.state.advancedTechnique}
             closeModal={this.closeModal}
           />
-        }
+        )}
       </Fragment>
     )
   }
