@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
+import { get, set } from 'idb-keyval'
 import { http, to, videos } from './helpers'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
@@ -41,21 +42,19 @@ class App extends PureComponent {
     }
 
     this.setState({ training, error: false })
-    localStorage.setItem('training', JSON.stringify(training))
+    set('training', training)
   }
 
-  componentDidMount () {
-    const training = localStorage.getItem('training')
-    if (training && training !== 'undefined') {
-      this.setState({ training: JSON.parse(training) })
+  async componentDidMount () {
+    const training = await get('training')
+    if (training) {
+      this.setState({ training })
     }
   }
 
   render () {
     return (
       <Fragment>
-        <h1>Treino</h1>
-
         <div className='select-training'>
           <label>Selecione seu treino (arquivo .xlsx):</label>
           <input type='file' onChange={this.handleUpload} />
