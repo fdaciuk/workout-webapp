@@ -45,7 +45,7 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
                   })}
                 </Td>
 
-                <Td>ex.SxR</Td>
+                <Td>{ex.SxR}</Td>
 
                 <Td>
                   {ex.tecnicaAvancada && (
