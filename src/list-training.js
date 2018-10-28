@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import {
   Typography,
+  Button,
   withStyles
 } from '@material-ui/core'
 import Title from './title'
@@ -49,9 +50,9 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
                 <Td>
                   {ex.tecnicaAvancada && (
                     ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
-                      <button onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
+                      <Button variant='contained' color='primary' onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
                         {ex.tecnicaAvancada}
-                      </button>
+                      </Button>
                     )
                   )}
                 </Td>
