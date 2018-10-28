@@ -1,20 +1,45 @@
 import React, { Fragment } from 'react'
-import './modal.css'
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  withStyles
+} from '@material-ui/core'
 
 const ModalAdvancedTechnique = ({ technique, closeModal }) => {
   const tech = technique.replace(/\dx$/, '').trim()
 
   return (
-    <Fragment>
-      <div className='overlay' onClick={closeModal} />
-      <div className='modal'>
-        <span className='close-button' onClick={closeModal}>&times;</span>
-        <h2>{tech}</h2>
-        {getTechniqueText(tech)}
-      </div>
-    </Fragment>
+    <Dialog
+      open={true}
+      onClose={closeModal}
+      scroll='paper'
+      aria-labelledby='scroll-dialog-title'
+    >
+      <DialogTitle>
+        {tech}
+        <CloseButton onClick={closeModal}>&times;</CloseButton>
+      </DialogTitle>
+      <DialogContent>{getTechniqueText(tech)}</DialogContent>
+    </Dialog>
   )
 }
+
+const styles = {
+  span: {
+    cursor: 'pointer',
+    fontSize: '20px',
+    padding: '10px',
+    position: 'absolute',
+    top: '5px',
+    right: '5px',
+    zIndex: 2
+  }
+}
+
+const CloseButton = withStyles(styles)(({ classes, ...props }) => (
+  <span {...props} className={classes.span} />
+))
 
 const A = ({ href, children }) => (
   <a href={href} rel='noopener noreferrer' target='_blank'>{children || href}</a>

@@ -1,59 +1,44 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: sans-serif;
-}
-
-table {
-  border: 1px solid;
-  max-width: 100%;
-}
-
-table td,
-table th {
-  border: 1px solid;
-  padding: 5px;
-}
-
-.select-training {
-  background: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.select-training label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.error-message,
-.loading-message {
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid;
   padding: 20px;
 }
 
-.error-message {
-  background: #ffe0e0;
-  border-color: #e8aeae;
-  color: #c12525;
-}
+/* .select-training { */
+/*   background: #f2f2f2; */
+/*   border: 1px solid #ccc; */
+/*   border-radius: 5px; */
+/*   padding: 10px; */
+/* } */
 
-.error-message h2,
-.error-message p {
-  margin: 0;
-}
+/* .select-training label { */
+/*   display: block; */
+/*   margin-bottom: 10px; */
+/* } */
 
-.error-message p {
-  margin-top: 10px;
-}
+/* .error-message, */
+/* .loading-message { */
+/*   margin: 10px 0; */
+/*   border-radius: 5px; */
+/*   border: 1px solid; */
+/*   padding: 20px; */
+/* } */
 
-.loading-message {
-  background: #e5e0ff;
-  border-color: #b2a3ff;
-  color: #4a0fd8;
-}
+/* .error-message { */
+/*   background: #ffe0e0; */
+/*   border-color: #e8aeae; */
+/*   color: #c12525; */
+/* } */
+
+/* .error-message h2, */
+/* .error-message p { */
+/*   margin: 0; */
+/* } */
+
+/* .error-message p { */
+/*   margin-top: 10px; */
+/* } */
+
+/* .loading-message { */
+/*   background: #e5e0ff; */
+/*   border-color: #b2a3ff; */
+/*   color: #4a0fd8; */
+/* } */

@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
+import { CssBaseline, TextField } from '@material-ui/core'
 import { get, set } from 'idb-keyval'
 import { http, to, videos } from './helpers'
 import ListTraining from './list-training'
@@ -35,7 +36,7 @@ class App extends PureComponent {
     this.setState({ isFetching: true })
     const [err, training] = await to(http.upload(process.env.REACT_APP_BACKEND, data))
     this.setState({ isFetching: false })
-    if (err || !training) {
+    if (err || !training || training.error) {
       console.log('ERR:', err, training)
       this.setState({ error: true })
       return
@@ -55,10 +56,16 @@ class App extends PureComponent {
   render () {
     return (
       <Fragment>
-        <div className='select-training'>
-          <label>Selecione seu treino (arquivo .xlsx):</label>
-          <input type='file' onChange={this.handleUpload} />
-        </div>
+        <CssBaseline />
+
+        <TextField
+          fullWidth
+          type='file'
+          variant='outlined'
+          onChange={this.handleUpload}
+          label='Selecione seu treino (arquivo .xlsx):'
+          InputLabelProps={{ shrink: true }}
+        />
 
         {this.state.isFetching && (
           <div className='loading-message'>

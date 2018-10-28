@@ -1,27 +1,38 @@
 import React, { Fragment } from 'react'
+import {
+  Typography,
+  Button,
+  withStyles
+} from '@material-ui/core'
+import Title from './title'
 import './list-training.css'
 
-const ListTraining = ({ training, openAdvancedTechnique, getVideo }) => (
+import { Table, THead, TBody, Th, Tr, Td } from './table'
+
+const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) => (
   <Fragment>
-    <h2>{training.foco}</h2>
+    <Title>{training.foco}</Title>
+
     {training.treino.map((t) => (
       <article key={t.treino} className='training'>
-        <h2>{t.treino} ({t.weekDay})</h2>
-        <p><strong>{t.musculos}</strong></p>
-        <p><strong>{t.intervalo}</strong></p>
+        <Typography variant='h5' component='h3' className={classes.subtitle}>
+          {t.treino} ({t.weekDay}) - {t.musculos}
+        </Typography>
+        <Typography>{t.intervalo}</Typography>
 
-        <table className='list-training-table'>
-          <thead>
-            <tr>
-              <th>Exercício</th>
-              <th>SxR</th>
-              <th>Técnica Avançada</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <THead>
+            <Tr>
+              {['Exercício', 'SxR', 'Técnica Avançada'].map((title) => (
+                <Th key={title}>{title}</Th>
+              ))}
+            </Tr>
+          </THead>
+
+          <TBody>
             {t.exercicios.map((ex) => (
-              <tr key={ex.exercicio}>
-                <td>
+              <Tr key={ex.exercicio}>
+                <Td>
                   {ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
                     if (exerc === ' + ') {
                       return <span key={exerc}>{exerc}</span>
@@ -32,24 +43,62 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo }) => (
                       </a>
                     )
                   })}
-                </td>
-                <td>{ex.SxR}</td>
-                <td>
+                </Td>
+
+                <Td>ex.SxR</Td>
+
+                <Td>
                   {ex.tecnicaAvancada && (
                     ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
-                      <button onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
+                      <Button variant='contained' color='primary' onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
                         {ex.tecnicaAvancada}
-                      </button>
+                      </Button>
                     )
                   )}
-                </td>
-              </tr>
+                </Td>
+              </Tr>
             ))}
-          </tbody>
-        </table>
+          </TBody>
+        </Table>
+
+        <Table
+          titles={['Exercício', 'SxR', 'Técnica Avançada']}
+          content={t.exercicios.map((ex) => [
+            ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
+              if (exerc === ' + ') {
+                return <span key={exerc}>{exerc}</span>
+              }
+              return (
+                <a key={exerc} href={getVideo(exerc)} rel='noopener noreferrer' target='_blank'>
+                  {exerc}
+                </a>
+              )
+            }),
+
+            ex.SxR,
+
+            ex.tecnicaAvancada && (
+              ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
+                <button onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
+                  {ex.tecnicaAvancada}
+                </button>
+              )
+            )
+          ])}
+        />
       </article>
     ))}
   </Fragment>
 )
 
-export default ListTraining
+const styles = {
+  subtitle: {
+    margin: '5px 0'
+  },
+
+  root: {
+    overflowX: 'auto'
+  }
+}
+
+export default withStyles(styles)(ListTraining)
