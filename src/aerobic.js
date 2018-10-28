@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
+import Title from './title'
 
 const Aerobic = ({ days }) => (
   <Fragment>
-    <h2>Aeróbicos</h2>
+    <Title>Aeróbicos</Title>
     <table>
       <tbody>
         {Object.entries(days).map(([day, time]) => (

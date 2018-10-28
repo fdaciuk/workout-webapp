@@ -1,14 +1,17 @@
 import React, { Fragment } from 'react'
+import { Typography, withStyles } from '@material-ui/core'
+import Title from './title'
 import './list-training.css'
 
-const ListTraining = ({ training, openAdvancedTechnique, getVideo }) => (
+const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) => (
   <Fragment>
-    <h2>{training.foco}</h2>
+    <Title>{training.foco}</Title>
     {training.treino.map((t) => (
       <article key={t.treino} className='training'>
-        <h2>{t.treino} ({t.weekDay})</h2>
-        <p><strong>{t.musculos}</strong></p>
-        <p><strong>{t.intervalo}</strong></p>
+        <Typography variant='h5' component='h3' className={classes.subtitle}>
+          {t.treino} ({t.weekDay}) - {t.musculos}
+        </Typography>
+        <Typography>{t.intervalo}</Typography>
 
         <table className='list-training-table'>
           <thead>
@@ -52,4 +55,10 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo }) => (
   </Fragment>
 )
 
-export default ListTraining
+const styles = {
+  subtitle: {
+    margin: '5px 0'
+  }
+}
+
+export default withStyles(styles)(ListTraining)

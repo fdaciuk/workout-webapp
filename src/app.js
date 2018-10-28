@@ -47,7 +47,6 @@ class App extends PureComponent {
   }
 
   async componentDidMount () {
-    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true
     const training = await get('training')
     if (training) {
       this.setState({ training })
