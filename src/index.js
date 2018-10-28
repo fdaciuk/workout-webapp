@@ -8,6 +8,13 @@ import * as serviceWorker from './serviceWorker'
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true
+  },
+
+  pallete: {
+    common: {
+      black: '#000',
+      white: '#fff'
+    }
   }
 })
 

@@ -1,11 +1,17 @@
 import React, { Fragment } from 'react'
-import { Typography, withStyles } from '@material-ui/core'
+import {
+  Typography,
+  withStyles
+} from '@material-ui/core'
 import Title from './title'
 import './list-training.css'
+
+import { Table, THead, TBody, Th, Tr, Td } from './table'
 
 const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) => (
   <Fragment>
     <Title>{training.foco}</Title>
+
     {training.treino.map((t) => (
       <article key={t.treino} className='training'>
         <Typography variant='h5' component='h3' className={classes.subtitle}>
@@ -13,18 +19,19 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
         </Typography>
         <Typography>{t.intervalo}</Typography>
 
-        <table className='list-training-table'>
-          <thead>
-            <tr>
-              <th>Exercício</th>
-              <th>SxR</th>
-              <th>Técnica Avançada</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <THead>
+            <Tr>
+              {['Exercício', 'SxR', 'Técnica Avançada'].map((title) => (
+                <Th key={title}>{title}</Th>
+              ))}
+            </Tr>
+          </THead>
+
+          <TBody>
             {t.exercicios.map((ex) => (
-              <tr key={ex.exercicio}>
-                <td>
+              <Tr key={ex.exercicio}>
+                <Td>
                   {ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
                     if (exerc === ' + ') {
                       return <span key={exerc}>{exerc}</span>
@@ -35,9 +42,11 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
                       </a>
                     )
                   })}
-                </td>
-                <td>{ex.SxR}</td>
-                <td>
+                </Td>
+
+                <Td>ex.SxR</Td>
+
+                <Td>
                   {ex.tecnicaAvancada && (
                     ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
                       <button onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
@@ -45,11 +54,37 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
                       </button>
                     )
                   )}
-                </td>
-              </tr>
+                </Td>
+              </Tr>
             ))}
-          </tbody>
-        </table>
+          </TBody>
+        </Table>
+
+        <Table
+          titles={['Exercício', 'SxR', 'Técnica Avançada']}
+          content={t.exercicios.map((ex) => [
+            ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
+              if (exerc === ' + ') {
+                return <span key={exerc}>{exerc}</span>
+              }
+              return (
+                <a key={exerc} href={getVideo(exerc)} rel='noopener noreferrer' target='_blank'>
+                  {exerc}
+                </a>
+              )
+            }),
+
+            ex.SxR,
+
+            ex.tecnicaAvancada && (
+              ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
+                <button onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
+                  {ex.tecnicaAvancada}
+                </button>
+              )
+            )
+          ])}
+        />
       </article>
     ))}
   </Fragment>
@@ -58,6 +93,10 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
 const styles = {
   subtitle: {
     margin: '5px 0'
+  },
+
+  root: {
+    overflowX: 'auto'
   }
 }
 

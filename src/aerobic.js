@@ -1,19 +1,21 @@
 import React, { Fragment } from 'react'
 import Title from './title'
+import { Table, TBody, Tr, Th, Td } from './table'
 
 const Aerobic = ({ days }) => (
   <Fragment>
     <Title>Aeróbicos</Title>
-    <table>
-      <tbody>
+
+    <Table>
+      <TBody>
         {Object.entries(days).map(([day, time]) => (
-          <tr key={day}>
-            <th>{day}</th>
-            <td>{time}</td>
-          </tr>
+          <Tr key={day}>
+            <Th>{day}</Th>
+            <Td>{time}</Td>
+          </Tr>
         ))}
-      </tbody>
-    </table>
+      </TBody>
+    </Table>
   </Fragment>
 )
 
