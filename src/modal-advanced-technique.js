@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react'
-import styled from 'styled-components'
-import { Dialog, DialogTitle, DialogContent } from '@material-ui/core'
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  withStyles
+} from '@material-ui/core'
 
 const ModalAdvancedTechnique = ({ technique, closeModal }) => {
   const tech = technique.replace(/\dx$/, '').trim()
@@ -21,15 +25,21 @@ const ModalAdvancedTechnique = ({ technique, closeModal }) => {
   )
 }
 
-const CloseButton = styled.span`
-  cursor: pointer;
-  font-size: 20px;
-  padding: 10px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  z-index: 2;
-`
+const styles = {
+  span: {
+    cursor: 'pointer',
+    fontSize: '20px',
+    padding: '10px',
+    position: 'absolute',
+    top: '5px',
+    right: '5px',
+    zIndex: 2
+  }
+}
+
+const CloseButton = withStyles(styles)(({ classes, ...props }) => (
+  <span {...props} className={classes.span} />
+))
 
 const A = ({ href, children }) => (
   <a href={href} rel='noopener noreferrer' target='_blank'>{children || href}</a>
