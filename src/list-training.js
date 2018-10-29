@@ -50,7 +50,7 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
                 <Td>
                   {ex.tecnicaAvancada && (
                     ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
-                      <Button variant='contained' color='primary' onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
+                      <Button size='small' variant='contained' color='primary' onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
                         {ex.tecnicaAvancada}
                       </Button>
                     )
