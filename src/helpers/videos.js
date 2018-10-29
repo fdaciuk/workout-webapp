@@ -114,7 +114,7 @@ export default {
   'Rosca Concentrada Martelo': 'https://www.youtube.com/watch?v=NqXU7MUl3RA',
   'Flexão de Punho Barra Sentado': 'https://www.youtube.com/watch?v=zCZ8MnWTsWk',
   'Extensão de Punho Barra Sentado': 'https://www.youtube.com/watch?v=-mMu5GK-TQ4',
-  'Extensão de Punho Barra Em Pé': 'https://www.youtube.com/watch?v=-Agm6CbtdycU',
+  'Extensão de Punho Barra Em Pé': 'https://www.youtube.com/watch?v=Agm6CbtdycU',
   'Extensão de Punho Cross': 'https://www.youtube.com/watch?v=c_X_Qraf4Uw',
   'Flexão de Punho Cross': 'https://www.youtube.com/watch?v=iibC4idQP9w',
   'Rotacional de Punho': 'https://www.youtube.com/watch?v=ZMev2xXkZ8A',
