@@ -12,7 +12,7 @@ import {
 
 const MainTable = ({ classes, children }) => (
   <Paper className={classes.paper}>
-    <MaterialTable>
+    <MaterialTable padding='checkbox'>
       {children}
     </MaterialTable>
   </Paper>

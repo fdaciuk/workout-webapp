@@ -16,9 +16,13 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
     {training.treino.map((t) => (
       <article key={t.treino} className='training'>
         <Typography variant='h5' component='h3' className={classes.subtitle}>
-          {t.treino} ({t.weekDay}) - {t.musculos}
+          <strong>{t.treino} ({t.weekDay})</strong> - {' '}
+          <span style={{ display: 'inline-block'}}>{t.musculos}</span>
         </Typography>
-        <Typography>{t.intervalo}</Typography>
+
+        <Typography variant='subtitle2' gutterBottom>
+          Intervalo: {t.intervalo.replace(/^.+: (.+)$/, '$1')}
+        </Typography>
 
         <Table>
           <THead>
@@ -32,7 +36,7 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
           <TBody>
             {t.exercicios.map((ex) => (
               <Tr key={ex.exercicio}>
-                <Td>
+                <Td padding='dense'>
                   {ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
                     if (exerc === ' + ') {
                       return <span key={exerc}>{exerc}</span>
@@ -45,9 +49,9 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
                   })}
                 </Td>
 
-                <Td>{ex.SxR}</Td>
+                <Td numeric>{ex.SxR}</Td>
 
-                <Td>
+                <Td padding='default'>
                   {ex.tecnicaAvancada && (
                     ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
                       <Button size='small' variant='contained' color='primary' onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
@@ -60,32 +64,6 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
             ))}
           </TBody>
         </Table>
-
-        <Table
-          titles={['Exercício', 'SxR', 'Técnica Avançada']}
-          content={t.exercicios.map((ex) => [
-            ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
-              if (exerc === ' + ') {
-                return <span key={exerc}>{exerc}</span>
-              }
-              return (
-                <a key={exerc} href={getVideo(exerc)} rel='noopener noreferrer' target='_blank'>
-                  {exerc}
-                </a>
-              )
-            }),
-
-            ex.SxR,
-
-            ex.tecnicaAvancada && (
-              ex.tecnicaAvancada.includes('Descanso') ? ex.tecnicaAvancada : (
-                <button onClick={openAdvancedTechnique(ex.tecnicaAvancada)}>
-                  {ex.tecnicaAvancada}
-                </button>
-              )
-            )
-          ])}
-        />
       </article>
     ))}
   </Fragment>
