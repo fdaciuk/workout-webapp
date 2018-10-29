@@ -5,7 +5,6 @@ import {
   withStyles
 } from '@material-ui/core'
 import Title from './title'
-import './list-training.css'
 
 import { Table, THead, TBody, Th, Tr, Td } from './table'
 
@@ -14,7 +13,7 @@ const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) =>
     <Title>{training.foco}</Title>
 
     {training.treino.map((t) => (
-      <article key={t.treino} className='training'>
+      <article key={t.treino} className={classes.training}>
         <Typography variant='h5' component='h3' className={classes.subtitle}>
           <strong>{t.treino} ({t.weekDay})</strong> - {' '}
           <span style={{ display: 'inline-block'}}>{t.musculos}</span>
@@ -76,6 +75,10 @@ const styles = {
 
   root: {
     overflowX: 'auto'
+  },
+
+  training: {
+    padding: '0 0 50px'
   }
 }
 

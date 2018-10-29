@@ -1,5 +1,5 @@
-import React, { PureComponent, Fragment } from 'react'
-import { CssBaseline, TextField } from '@material-ui/core'
+import React, { PureComponent } from 'react'
+import { CssBaseline, TextField, withStyles } from '@material-ui/core'
 import { get, set } from 'idb-keyval'
 import { http, to, videos } from './helpers'
 import ListTraining from './list-training'
@@ -55,7 +55,7 @@ class App extends PureComponent {
 
   render () {
     return (
-      <Fragment>
+      <main className={this.props.classes.main}>
         <CssBaseline />
 
         <TextField
@@ -98,9 +98,15 @@ class App extends PureComponent {
             closeModal={this.closeModal}
           />
         )}
-      </Fragment>
+      </main>
     )
   }
 }
 
-export default App
+const styles = {
+  main: {
+    padding: 20
+  }
+}
+
+export default withStyles(styles)(App)
