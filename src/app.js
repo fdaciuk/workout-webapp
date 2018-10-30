@@ -1,111 +1,142 @@
-import React, { PureComponent } from 'react'
-import { CssBaseline, TextField, withStyles } from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
+import {
+  CssBaseline,
+  TextField,
+  Typography,
+  withStyles
+} from '@material-ui/core'
 import { get, set } from 'idb-keyval'
 import { http, to, videos } from './helpers'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
 
-class App extends PureComponent {
-  state = {
-    training: null,
-    advancedTechnique: null,
-    isFetching: false,
-    error: false
-  }
+const App = ({ classes }) => {
+  const [isFetching, setFetching] = useState(false)
+  const [error, setError] = useState(false)
+  const [training, setTraining] = useState(null)
+  const [advancedTechnique, setTechnique] = useState(null)
 
-  openAdvancedTechnique = (technique) => (e) => {
-    this.setState({ advancedTechnique: technique })
-  }
+  useEffect(async () => {
+    const training = await get('training')
+    if (training) {
+      setTraining(training)
+    }
+  })
 
-  closeModal = () => {
-    this.setState({ advancedTechnique: null })
-  }
-
-  getVideo = (exercise) => {
-    const ex = Object.keys(videos).find((v) => v.includes(exercise.trim()))
-    return videos[ex]
-  }
-
-  handleUpload = async (e) => {
+  const handleUpload = async (e) => {
     e.preventDefault()
+    console.log('upload!')
     const file = e.target.files[0]
     let data = new FormData()
     data.append('file', file)
 
-    this.setState({ isFetching: true })
+    setFetching(true)
     const [err, training] = await to(http.upload(process.env.REACT_APP_BACKEND, data))
-    this.setState({ isFetching: false })
+    setFetching(false)
+
     if (err || !training || training.error) {
       console.log('ERR:', err, training)
-      this.setState({ error: true })
-      return
+      return setError(true)
     }
 
-    this.setState({ training, error: false })
+    setError(false)
+    setTraining(training)
     set('training', training)
   }
 
-  async componentDidMount () {
-    const training = await get('training')
-    if (training) {
-      this.setState({ training })
-    }
+  const closeModal = () => {
+    setTechnique(null)
   }
 
-  render () {
-    return (
-      <main className={this.props.classes.main}>
-        <CssBaseline />
+  const openAdvancedTechnique = (technique) => (e) => {
+    setTechnique(technique)
+  }
 
-        <TextField
-          fullWidth
-          type='file'
-          variant='outlined'
-          onChange={this.handleUpload}
-          label='Selecione seu treino (arquivo .xlsx):'
-          InputLabelProps={{ shrink: true }}
+
+  return (
+    <main className={classes.main}>
+      <CssBaseline />
+
+      <TextField
+        fullWidth
+        type='file'
+        variant='outlined'
+        onChange={handleUpload}
+        label='Selecione seu treino (arquivo .xlsx):'
+        InputLabelProps={{ shrink: true }}
+      />
+
+      {isFetching && (
+        <Typography className={`${classes.messageBox} ${classes.loading}`}>
+          Buscando informações do seu treino...
+        </Typography>
+      )}
+
+      {error && (
+        <div className={`${classes.messageBox} ${classes.error}`}>
+          <Typography variant='h6' component='h2'>Deu problema :(</Typography>
+          <Typography>Por favor, tente novamente mais tarde.</Typography>
+        </div>
+      )}
+
+      {training && (
+        <ListTraining
+          training={training}
+          openAdvancedTechnique={openAdvancedTechnique}
+          getVideo={getVideo}
         />
+      )}
 
-        {this.state.isFetching && (
-          <div className='loading-message'>
-            Buscando informações do seu treino...
-          </div>
-        )}
+      {training && training.aerobic && (
+        <Aerobic days={training.aerobic} />
+      )}
 
-        {this.state.error && (
-          <div className='error-message'>
-            <h2>Deu problema :(</h2>
-            <p>Por favor, tente novamente mais tarde.</p>
-          </div>
-        )}
+      {advancedTechnique && (
+        <ModalAdvancedTechnique
+          technique={advancedTechnique}
+          closeModal={closeModal}
+        />
+      )}
+    </main>
+  )
+}
 
-        {this.state.training && (
-          <ListTraining
-            training={this.state.training}
-            openAdvancedTechnique={this.openAdvancedTechnique}
-            getVideo={this.getVideo}
-          />
-        )}
-
-        {this.state.training && this.state.training.aerobic && (
-          <Aerobic days={this.state.training.aerobic} />
-        )}
-
-        {this.state.advancedTechnique && (
-          <ModalAdvancedTechnique
-            technique={this.state.advancedTechnique}
-            closeModal={this.closeModal}
-          />
-        )}
-      </main>
-    )
-  }
+function getVideo (exercise) {
+  const ex = Object.keys(videos).find((v) => v.includes(exercise.trim()))
+  return videos[ex]
 }
 
 const styles = {
   main: {
-    padding: 20
+    padding: 20,
+  },
+
+  messageBox: {
+  margin: '10px 0',
+  borderRadius: 5,
+  border: '1px solid',
+  padding: 20,
+  },
+
+  loading: {
+    background: '#e5e0ff',
+    borderColor: '#b2a3ff',
+    color: '#4a0fd8',
+  },
+
+  error: {
+    background: '#ffe0e0',
+    borderColor: '#e8aeae',
+
+    '& h2, & p': {
+      margin: 0,
+      color: '#c12525',
+    },
+
+    '& p': {
+      marginTop: 10,
+    }
   }
 }
 
