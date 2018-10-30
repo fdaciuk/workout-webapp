@@ -10,7 +10,7 @@ const Aerobic = ({ days }) => (
       <TBody>
         {Object.entries(days).map(([day, time]) => (
           <Tr key={day}>
-            <Th>{day}</Th>
+            <Th style={{ width: 100 }}>{day}</Th>
             <Td>{time}</Td>
           </Tr>
         ))}
