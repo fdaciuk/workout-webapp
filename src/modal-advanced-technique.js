@@ -169,7 +169,8 @@ function getTechniqueText (technique) {
         90 segundos (sempre tentando ficar em 60s). A carga utilizada é sempre a
         máxima, mas pode ser abaixada pra ficar dentro das repetições alvos,
         afinal o cansaço será bem alto.
-        Vídeo: https://youtu.be/yb1Kz9rW3_s
+
+        Vídeo: <A href='https://youtu.be/yb1Kz9rW3_s' />
       </Typography>
     )
   }
