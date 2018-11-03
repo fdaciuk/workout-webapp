@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import {
   CssBaseline,
   TextField,
-  Typography,
   withStyles
 } from '@material-ui/core'
 import { get, set } from 'idb-keyval'
 import { http, to, getVideo } from './helpers'
 import OfflineMessage from './offline-message'
+import FetchingMessage from './fetching-message'
+import ErrorMessage from './error-message'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
@@ -90,19 +91,8 @@ const App = ({ classes }) => {
       )}
 
       {!isOnline && <OfflineMessage />}
-
-      {isFetching && (
-        <Typography className={`${classes.messageBox} ${classes.loading}`}>
-          Buscando informações do seu treino...
-        </Typography>
-      )}
-
-      {error && (
-        <div className={`${classes.messageBox} ${classes.error}`}>
-          <Typography variant='h6' component='h2'>Deu problema :(</Typography>
-          <Typography>Por favor, tente novamente mais tarde.</Typography>
-        </div>
-      )}
+      {isFetching && <FetchingMessage />}
+      {error && <ErrorMessage />}
 
       {training && (
         <ListTraining
@@ -133,33 +123,6 @@ const styles = {
 
   mainOffline: {
     paddingTop: 40
-  },
-
-  messageBox: {
-  margin: '10px 0',
-  borderRadius: 5,
-  border: '1px solid',
-  padding: 20,
-  },
-
-  loading: {
-    background: '#e5e0ff',
-    borderColor: '#b2a3ff',
-    color: '#4a0fd8',
-  },
-
-  error: {
-    background: '#ffe0e0',
-    borderColor: '#e8aeae',
-
-    '& h2, & p': {
-      margin: 0,
-      color: '#c12525',
-    },
-
-    '& p': {
-      marginTop: 10,
-    }
   }
 }
 
