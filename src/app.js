@@ -5,31 +5,31 @@ import {
   Typography,
   withStyles
 } from '@material-ui/core'
-import { WifiOff } from '@material-ui/icons'
 import { get, set } from 'idb-keyval'
-import { http, to, videos } from './helpers'
+import { http, to, getVideo } from './helpers'
+import OfflineMessage from './offline-message'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
 
 const App = ({ classes }) => {
   const [isFetching, setFetching] = useState(false)
-  const [isOnline, setIsOnline] = useState(navigator.onLine)
   const [error, setError] = useState(false)
-  const [training, setTraining] = useState(null)
   const [advancedTechnique, setTechnique] = useState(null)
 
-  // Set training on cache
+  const [training, setTraining] = useState(null)
   useEffect(async () => {
-    console.log('Set training on cache')
+    console.log('Get training from cache')
     const training = await get('training')
     if (training) {
+      console.log('Set training from cache to state')
       setTraining(training)
     }
   }, [])
 
-  // set online / offline events
+  const [isOnline, setIsOnline] = useState(navigator.onLine)
   useEffect(() => {
+    console.log('check online / offline connections')
     function handleConnection () {
       setIsOnline(navigator.onLine)
     }
@@ -89,12 +89,7 @@ const App = ({ classes }) => {
         />
       )}
 
-      {!isOnline && (
-        <Typography className={classes.offline} variant='button'>
-          <WifiOff />
-          Você está offline
-        </Typography>
-      )}
+      {!isOnline && <OfflineMessage />}
 
       {isFetching && (
         <Typography className={`${classes.messageBox} ${classes.loading}`}>
@@ -131,11 +126,6 @@ const App = ({ classes }) => {
   )
 }
 
-function getVideo (exercise) {
-  const ex = Object.keys(videos).find((v) => v.includes(exercise.trim()))
-  return videos[ex]
-}
-
 const styles = {
   main: {
     padding: 20,
@@ -143,24 +133,6 @@ const styles = {
 
   mainOffline: {
     paddingTop: 40
-  },
-
-  offline: {
-    background: 'red',
-    color: '#fff',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    padding: 5,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
-
-    '& svg': {
-      marginRight: 10
-    }
   },
 
   messageBox: {

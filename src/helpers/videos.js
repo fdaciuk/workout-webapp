@@ -1,4 +1,9 @@
-export default {
+function getVideo (exercise) {
+  const ex = Object.keys(videos).find((v) => v.includes(exercise.trim()))
+  return videos[ex]
+}
+
+const videos = {
   'Supino Reto Barra': 'https://www.youtube.com/watch?v=R8P8ltM6R8s',
   'Supino Reto Halteres': 'https://www.youtube.com/watch?v=l4ffhu6yvPU',
   'Supino Reto Smith': 'https://www.youtube.com/watch?v=UAb55wYcN_c',
@@ -171,6 +176,8 @@ export default {
   'Prancha': 'https://www.youtube.com/watch?v=AB-boevgf8w',
   'Extensão Lombar': 'https://www.youtube.com/watch?v=Vu9vg40C_Ew'
 }
+
+export { getVideo }
 
 // // >>> Página buscada:
 // // >>> https://www.leandrotwin.com.br/assessoria/listadeexecicios.php
