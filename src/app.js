@@ -22,7 +22,7 @@ const App = ({ classes }) => {
     if (training) {
       setTraining(training)
     }
-  })
+  }, [training])
 
   const handleUpload = async (e) => {
     e.preventDefault()
