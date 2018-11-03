@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   CssBaseline,
   TextField,
   withStyles
 } from '@material-ui/core'
-import { get, set } from 'idb-keyval'
+import { set } from 'idb-keyval'
 import { http, to, getVideo } from './helpers'
+import { useTraining, useOnlineOfflineChecker } from './hooks'
 import OfflineMessage from './offline-message'
 import FetchingMessage from './fetching-message'
 import ErrorMessage from './error-message'
@@ -14,35 +15,11 @@ import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
 
 const App = ({ classes }) => {
+  const { training, setTraining } = useTraining()
+  const { isOnline } = useOnlineOfflineChecker()
+
   const [isFetching, setFetching] = useState(false)
   const [error, setError] = useState(false)
-  const [advancedTechnique, setTechnique] = useState(null)
-
-  const [training, setTraining] = useState(null)
-  useEffect(async () => {
-    console.log('Get training from cache')
-    const training = await get('training')
-    if (training) {
-      console.log('Set training from cache to state')
-      setTraining(training)
-    }
-  }, [])
-
-  const [isOnline, setIsOnline] = useState(navigator.onLine)
-  useEffect(() => {
-    console.log('check online / offline connections')
-    function handleConnection () {
-      setIsOnline(navigator.onLine)
-    }
-
-    window.addEventListener('online', handleConnection, false)
-    window.addEventListener('offline', handleConnection, false)
-
-    return () => {
-      window.removeEventListener('online', handleConnection)
-      window.removeEventListener('offline', handleConnection)
-    }
-  }, [])
 
   const handleUpload = async (e) => {
     e.preventDefault()
@@ -67,6 +44,8 @@ const App = ({ classes }) => {
     set('training', training)
   }
 
+
+  const [advancedTechnique, setTechnique] = useState(null)
   const closeModal = () => {
     setTechnique(null)
   }
