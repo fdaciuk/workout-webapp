@@ -14,7 +14,7 @@ import Aerobic from './aerobic'
 
 const App = ({ classes }) => {
   const [isFetching, setFetching] = useState(false)
-  const [isOnline, setIsOnline] = useState(false)
+  const [isOnline, setIsOnline] = useState(true)
   const [error, setError] = useState(false)
   const [training, setTraining] = useState(null)
   const [advancedTechnique, setTechnique] = useState(null)
