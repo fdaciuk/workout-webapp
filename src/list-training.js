@@ -14,10 +14,13 @@ import {
 import Subtitle from './subtitle'
 import { Table, THead, TBody, Th, Tr, Td } from './table'
 
+const date = new Date()
+console.dir(date.getDay())
+
 const ListTraining = ({ training, openAdvancedTechnique, getVideo, classes }) => (
   <Fragment>
-    {training.treino.map((t) => (
-      <ExpansionPanel key={t.treino}>
+    {training.treino.map((t, index) => (
+      <ExpansionPanel key={t.treino} expanded={date.getDay() === index + 1}>
         <ExpansionPanelSummary expandIcon={<ExpandMore />}>
           <Typography variant='button'>{t.treino} ({t.weekDay})</Typography>
         </ExpansionPanelSummary>
