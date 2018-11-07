@@ -1,13 +1,16 @@
 import React from 'react'
 import MessageBox from './message-box'
 import { Typography, withStyles } from '@material-ui/core'
+import Space from './space'
 
 const FetchingMessage = ({ classes }) => (
-  <MessageBox className={classes.loading}>
-    <Typography>
-      Buscando informações do seu treino...
-    </Typography>
-  </MessageBox>
+  <Space horizontal>
+    <MessageBox className={classes.loading}>
+      <Typography>
+        Buscando informações do seu treino...
+      </Typography>
+    </MessageBox>
+  </Space>
 )
 
 const styles = {

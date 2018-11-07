@@ -22,6 +22,7 @@ import Tabs from './tabs'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
+import Space from './space'
 
 const App = ({ classes }) => {
   const { training, setTraining } = useTraining()
@@ -35,28 +36,30 @@ const App = ({ classes }) => {
   useEffect(() => {
     const date = new Date()
     setWeekDay(date.getDay())
-  }, [weekDay])
+  }, [])
 
   return (
-    <main className={`${!isOnline ? classes.mainOffline : ''} ${classes.main}`}>
+    <main className={`${!isOnline ? classes.mainOffline : ''}`}>
       <CssBaseline />
 
       {isOnline && (
-        <TextField
-          fullWidth
-          type='file'
-          variant='outlined'
-          onChange={handleUpload}
-          label='Selecione seu treino (arquivo .xlsx):'
-          InputLabelProps={{ shrink: true }}
-        />
+        <Space className={classes.paper} horizontal vertical>
+          <TextField
+            fullWidth
+            type='file'
+            variant='outlined'
+            onChange={handleUpload}
+            label='Selecione seu treino (arquivo .xlsx):'
+            InputLabelProps={{ shrink: true }}
+          />
+        </Space>
       )}
 
       {!isOnline && <OfflineMessage />}
       {isFetching && <FetchingMessage />}
       {error && <ErrorMessage />}
 
-      {training && <Title>{training.foco}</Title>}
+      {training && <Space horizontal><Title>{training.foco}</Title></Space>}
 
       {training && <Tabs training={training} tab={tab} setTab={setTab} />}
 
@@ -66,6 +69,7 @@ const App = ({ classes }) => {
           openAdvancedTechnique={openAdvancedTechnique}
           getVideo={getVideo}
           weekDay={weekDay}
+          setWeekDay={setWeekDay}
         />
       )}
 
@@ -84,10 +88,6 @@ const App = ({ classes }) => {
 }
 
 const styles = {
-  main: {
-    padding: 20,
-  },
-
   mainOffline: {
     paddingTop: 40
   }

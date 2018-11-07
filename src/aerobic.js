@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Subtitle from './subtitle'
 import { Table, TBody, Tr, Th, Td } from './table'
+import Space from './space'
 
 const Aerobic = ({ days }) => (
-  <Fragment>
+  <Space horizontal>
     <Subtitle>
       <strong>Aeróbicos</strong>
     </Subtitle>
@@ -18,7 +19,7 @@ const Aerobic = ({ days }) => (
         ))}
       </TBody>
     </Table>
-  </Fragment>
+  </Space>
 )
 
 export default Aerobic

@@ -19,11 +19,16 @@ const ListTraining = ({
   openAdvancedTechnique,
   getVideo,
   weekDay,
+  setWeekDay,
   classes
 }) => (
   <Fragment>
     {training.treino.map((t, index) => (
-      <ExpansionPanel key={t.treino} expanded={weekDay === index + 1}>
+      <ExpansionPanel
+        key={t.treino}
+        expanded={weekDay === index + 1}
+        onClick={() => setWeekDay(index + 1)}
+      >
         <ExpansionPanelSummary expandIcon={<ExpandMore />}>
           <Typography variant='button'>{t.treino} ({t.weekDay})</Typography>
         </ExpansionPanelSummary>

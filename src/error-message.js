@@ -1,12 +1,15 @@
 import React from 'react'
 import MessageBox from './message-box'
 import { Typography, withStyles } from '@material-ui/core'
+import Space from './space'
 
 const ErrorMessage = ({ classes }) => (
-  <MessageBox className={classes.error}>
-    <Typography variant='h6' component='h2'>Deu problema :(</Typography>
-    <Typography>Por favor, tente novamente mais tarde.</Typography>
-  </MessageBox>
+  <Space horizontal>
+    <MessageBox className={classes.error}>
+      <Typography variant='h6' component='h2'>Deu problema :(</Typography>
+      <Typography>Por favor, tente novamente mais tarde.</Typography>
+    </MessageBox>
+  </Space>
 )
 
 const styles = {
