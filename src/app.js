@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import {
   CssBaseline,
@@ -30,6 +30,12 @@ const App = ({ classes }) => {
   const { advancedTechnique, openAdvancedTechnique, closeModal } = useTechnique()
 
   const [tab, setTab] = useState(0)
+  const [weekDay, setWeekDay] = useState(0)
+
+  useEffect(() => {
+    const date = new Date()
+    setWeekDay(date.getDay())
+  }, [weekDay])
 
   return (
     <main className={`${!isOnline ? classes.mainOffline : ''} ${classes.main}`}>
@@ -59,6 +65,7 @@ const App = ({ classes }) => {
           training={training}
           openAdvancedTechnique={openAdvancedTechnique}
           getVideo={getVideo}
+          weekDay={weekDay}
         />
       )}
 
