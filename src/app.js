@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   CssBaseline,
@@ -17,6 +17,8 @@ import { getVideo } from './helpers'
 import OfflineMessage from './offline-message'
 import FetchingMessage from './fetching-message'
 import ErrorMessage from './error-message'
+import Title from './title'
+import Tabs from './tabs'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
@@ -26,6 +28,8 @@ const App = ({ classes }) => {
   const { isOnline } = useOnlineOfflineChecker()
   const { isFetching, error, handleUpload } = useUpload({ setTraining })
   const { advancedTechnique, openAdvancedTechnique, closeModal } = useTechnique()
+
+  const [tab, setTab] = useState(0)
 
   return (
     <main className={`${!isOnline ? classes.mainOffline : ''} ${classes.main}`}>
@@ -46,7 +50,11 @@ const App = ({ classes }) => {
       {isFetching && <FetchingMessage />}
       {error && <ErrorMessage />}
 
-      {training && (
+      {training && <Title>{training.foco}</Title>}
+
+      {training && <Tabs training={training} tab={tab} setTab={setTab} />}
+
+      {training && tab === 0 && (
         <ListTraining
           training={training}
           openAdvancedTechnique={openAdvancedTechnique}
@@ -54,7 +62,7 @@ const App = ({ classes }) => {
         />
       )}
 
-      {training && training.aerobic && (
+      {training && training.aerobic && tab === 1 && (
         <Aerobic days={training.aerobic} />
       )}
 

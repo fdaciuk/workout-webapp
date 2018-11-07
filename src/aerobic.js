@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'
-import Title from './title'
+import Subtitle from './subtitle'
 import { Table, TBody, Tr, Th, Td } from './table'
 
 const Aerobic = ({ days }) => (
   <Fragment>
-    <Title>Aeróbicos</Title>
+    <Subtitle>
+      <strong>Aeróbicos</strong>
+    </Subtitle>
 
     <Table>
       <TBody>
