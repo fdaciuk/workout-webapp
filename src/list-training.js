@@ -27,9 +27,11 @@ const ListTraining = ({
       <ExpansionPanel
         key={t.treino}
         expanded={weekDay === index + 1}
-        onClick={() => setWeekDay(index + 1)}
       >
-        <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMore />}
+          onClick={() => setWeekDay(index + 1)}
+        >
           <Typography variant='button'>{t.treino} ({t.weekDay})</Typography>
         </ExpansionPanelSummary>
 
