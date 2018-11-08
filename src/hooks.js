@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { get, set } from 'idb-keyval'
-import { http, to } from './helpers'
+import { http, to, lower } from './helpers'
 
 export function useTraining () {
   const [training, setTraining] = useState(null)
@@ -84,15 +84,31 @@ export function useTechnique () {
 }
 
 export function useWeekDay () {
+  const weekDays = [
+    'domingo',
+    'segunda',
+    'terça',
+    'quarta',
+    'quinta',
+    'sexta',
+    'sábado'
+  ]
   const [weekDay, setWeekDay] = useState(null)
 
-  const handleSetWeekDay = (index) => {
-    setWeekDay(index === weekDay ? null : index)
+  const isTheSame = (a, b) => a === b
+
+  const handleSetWeekDay = (day) => {
+    const lowerDay = lower(day)
+    setWeekDay(
+      !isTheSame(lowerDay, weekDay) && weekDays.includes(lowerDay)
+        ? lowerDay
+        : null
+    )
   }
 
   useEffect(() => {
     const date = new Date()
-    setWeekDay(date.getDay())
+    setWeekDay(weekDays[date.getDay()])
   }, [])
 
   return { weekDay, handleSetWeekDay }

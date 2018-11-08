@@ -13,6 +13,7 @@ import {
 } from '@material-ui/icons'
 import Subtitle from './subtitle'
 import { Table, THead, TBody, Th, Tr, Td } from './table'
+import { lower } from './helpers'
 
 const ListTraining = ({
   training,
@@ -23,14 +24,14 @@ const ListTraining = ({
   classes
 }) => (
   <Fragment>
-    {training.treino.map((t, index) => (
+    {training.treino.map((t) => (
       <ExpansionPanel
         key={t.treino}
-        expanded={weekDay === index + 1}
+        expanded={weekDay === lower(t.weekDay)}
       >
         <ExpansionPanelSummary
           expandIcon={<ExpandMore />}
-          onClick={() => setWeekDay(index + 1)}
+          onClick={() => setWeekDay(t.weekDay)}
         >
           <Typography variant='button'>{t.treino} ({t.weekDay})</Typography>
         </ExpansionPanelSummary>
