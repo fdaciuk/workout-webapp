@@ -82,3 +82,18 @@ export function useTechnique () {
 
   return { advancedTechnique, openAdvancedTechnique, closeModal }
 }
+
+export function useWeekDay () {
+  const [weekDay, setWeekDay] = useState(null)
+
+  const handleSetWeekDay = (index) => {
+    setWeekDay(index === weekDay ? null : index)
+  }
+
+  useEffect(() => {
+    const date = new Date()
+    setWeekDay(date.getDay())
+  }, [])
+
+  return { weekDay, handleSetWeekDay }
+}

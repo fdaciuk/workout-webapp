@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import {
   CssBaseline,
@@ -10,7 +10,8 @@ import {
   useTraining,
   useOnlineOfflineChecker,
   useUpload,
-  useTechnique
+  useTechnique,
+  useWeekDay
 } from './hooks'
 
 import { getVideo } from './helpers'
@@ -29,14 +30,9 @@ const App = ({ classes }) => {
   const { isOnline } = useOnlineOfflineChecker()
   const { isFetching, error, handleUpload } = useUpload({ setTraining })
   const { advancedTechnique, openAdvancedTechnique, closeModal } = useTechnique()
+  const { weekDay, handleSetWeekDay } = useWeekDay()
 
   const [tab, setTab] = useState(0)
-  const [weekDay, setWeekDay] = useState(0)
-
-  useEffect(() => {
-    const date = new Date()
-    setWeekDay(date.getDay())
-  }, [])
 
   return (
     <main className={`${!isOnline ? classes.mainOffline : ''}`}>
@@ -69,7 +65,7 @@ const App = ({ classes }) => {
           openAdvancedTechnique={openAdvancedTechnique}
           getVideo={getVideo}
           weekDay={weekDay}
-          setWeekDay={setWeekDay}
+          setWeekDay={handleSetWeekDay}
         />
       )}
 
