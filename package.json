@@ -12,8 +12,10 @@
     "react-scripts": "2.0.5"
   },
   "scripts": {
-    "dev": "BROWSER=null react-scripts start",
-    "build": "react-scripts build",
+    "old:dev": "react-scripts start",
+    "old:build": "react-scripts build",
+    "dev": "BROWSER=null cra-rewired -s react-scripts -m start -c webpack.custom.js",
+    "build": "react-scripts cra-rewired -s react-scripts -m build -c webpack.custom.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -25,5 +27,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "cra-rewired": "^1.0.12"
+  }
 }

@@ -14,7 +14,7 @@ import {
   useWeekDay
 } from './hooks'
 
-import { getVideo } from './helpers'
+import { getVideo } from '@helpers'
 import OfflineMessage from './offline-message'
 import FetchingMessage from './fetching-message'
 import ErrorMessage from './error-message'
