@@ -1,4 +1,5 @@
 import React from 'react'
+import css from 'strclass'
 import {
   Paper,
   Table as MaterialTable,
@@ -24,22 +25,24 @@ const StyledTable = withStyles({
   }
 })(MainTable)
 
-const Th = withStyles((theme) => ({
-  cell: {
-    backgroundColor: theme.pallete.common.black,
-    color: theme.pallete.common.white
-  }
-}))(({ classes, ...props }) => (
-  <TableCell {...props} className={classes.cell} />
-))
+const makeCell = (newTheme) => (
+  withStyles((theme) => ({
+    cell: newTheme(theme),
 
-const Td = withStyles({
-  cell: {
-    fontSize: 14
-  }
-})(({ classes, ...props }) => (
-  <TableCell {...props} className={classes.cell} />
-))
+    center: {
+      textAlign: 'center'
+    }
+  }))(({ classes, center, ...props }) => (
+    <TableCell {...props} className={css({ [classes.center]: center }, classes.cell)} />
+  ))
+)
+
+const Th = makeCell((theme) => ({
+  backgroundColor: theme.pallete.common.black,
+  color: theme.pallete.common.white
+}))
+
+const Td = makeCell(() => ({ fontSize: 14 }))
 
 export {
   StyledTable as Table,

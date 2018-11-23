@@ -8,6 +8,12 @@ module.exports = function (paths) {
       $set: {
         '@helpers': join(__dirname, 'src', 'helpers')
       }
+    },
+
+    module: {
+      $set: {
+        noParse: /node_modules\/strclass\/dist\/strclass.min.js/
+      }
     }
   }
 }

@@ -48,7 +48,7 @@ const ListTraining = ({
             <THead>
               <Tr>
                 {['Exercício', 'SxR', 'Técnica Avançada'].map((title) => (
-                  <Th key={title}>{title}</Th>
+                  <Th key={title} center={title === 'SxR'}>{title}</Th>
                 ))}
               </Tr>
             </THead>
@@ -69,7 +69,7 @@ const ListTraining = ({
                     })}
                   </Td>
 
-                  <Td numeric>{ex.SxR}</Td>
+                  <Td center>{ex.SxR}</Td>
 
                   <Td padding='default'>
                     {ex.tecnicaAvancada && (
