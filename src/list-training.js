@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Typography,
   ExpansionPanel,
   ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  ExpansionPanelDetails as MaterialExpansionPanelDetails,
   Button,
-  withStyles
 } from '@material-ui/core'
 import {
   // OndemandVideo,
@@ -21,7 +21,6 @@ const ListTraining = ({
   getVideo,
   weekDay,
   setWeekDay,
-  classes
 }) => (
   <Fragment>
     {training.treino.map((t) => (
@@ -36,9 +35,9 @@ const ListTraining = ({
           <Typography variant='button'>{t.treino} ({t.weekDay})</Typography>
         </ExpansionPanelSummary>
 
-        <ExpansionPanelDetails className={classes.details}>
+        <ExpansionPanelDetails>
           <Subtitle>
-            <span style={{ display: 'inline-block'}}>{t.musculos}</span>
+            <Span>{t.musculos}</Span>
           </Subtitle>
           <Typography variant='subtitle2' gutterBottom>
             Intervalo: {t.intervalo.replace(/^.+: (.+)$/, '$1')}
@@ -91,18 +90,14 @@ const ListTraining = ({
   </Fragment>
 )
 
-const styles = {
-  root: {
-    overflowX: 'auto'
-  },
-
-  training: {
-    padding: '0 0 50px'
-  },
-
-  details: {
-    display: 'block'
+const ExpansionPanelDetails = styled(MaterialExpansionPanelDetails)`
+  && {
+    display: block;
   }
-}
+`
 
-export default withStyles(styles)(ListTraining)
+const Span = styled.span`
+  display: inline-block;
+`
+
+export default ListTraining

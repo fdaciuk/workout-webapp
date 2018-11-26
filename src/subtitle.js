@@ -1,16 +1,13 @@
-import React from 'react'
-import { Typography, withStyles } from '@material-ui/core'
+import styled from 'styled-components'
+import { Typography } from '@material-ui/core'
 
-const Subtitle = ({ classes, children }) => (
-  <Typography variant='h5' component='h3' className={classes.subtitle}>
-    {children}
-  </Typography>
-)
-
-const styles = {
-  subtitle: {
-    margin: '5px 0'
+const Subtitle = styled(Typography).attrs({
+  variant: 'h5',
+  component: 'h3'
+})`
+  && {
+    margin: 5px 0;
   }
-}
+`
 
-export default withStyles(styles)(Subtitle)
+export default Subtitle

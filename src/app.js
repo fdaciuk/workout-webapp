@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
 import {
   CssBaseline,
-  TextField,
-  withStyles
+  TextField
 } from '@material-ui/core'
 
 import {
@@ -18,14 +18,14 @@ import { getVideo } from '@helpers'
 import OfflineMessage from './offline-message'
 import FetchingMessage from './fetching-message'
 import ErrorMessage from './error-message'
-import Title from './title'
+import MainTitle from './main-title'
 import Tabs from './tabs'
 import ListTraining from './list-training'
 import ModalAdvancedTechnique from './modal-advanced-technique'
 import Aerobic from './aerobic'
 import Space from './space'
 
-const App = ({ classes }) => {
+const App = () => {
   const { training, setTraining } = useTraining()
   const { isOnline } = useOnlineOfflineChecker()
   const { isFetching, error, handleUpload } = useUpload({ setTraining })
@@ -35,11 +35,11 @@ const App = ({ classes }) => {
   const [tab, setTab] = useState(0)
 
   return (
-    <main className={`${!isOnline ? classes.mainOffline : ''}`}>
+    <Main isOnline={isOnline}>
       <CssBaseline />
 
       {isOnline && (
-        <Space className={classes.paper} horizontal vertical>
+        <Space horizontal vertical>
           <TextField
             fullWidth
             type='file'
@@ -55,7 +55,7 @@ const App = ({ classes }) => {
       {isFetching && <FetchingMessage />}
       {error && <ErrorMessage />}
 
-      {training && <Space horizontal><Title>{training.foco}</Title></Space>}
+      {training && <Space horizontal><MainTitle>{training.foco}</MainTitle></Space>}
 
       {training && <Tabs training={training} tab={tab} setTab={setTab} />}
 
@@ -79,14 +79,12 @@ const App = ({ classes }) => {
           closeModal={closeModal}
         />
       )}
-    </main>
+    </Main>
   )
 }
 
-const styles = {
-  mainOffline: {
-    paddingTop: 40
-  }
-}
+const Main = styled.main`
+  padding-top: ${({ isOnline }) => !isOnline ? '40px' : null}
+`
 
-export default withStyles(styles)(App)
+export default App

@@ -10,7 +10,7 @@
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",
     "react-scripts": "2.0.5",
-    "strclass": "^2.0.9"
+    "styled-components": "^4.1.1"
   },
   "scripts": {
     "old:dev": "react-scripts start",

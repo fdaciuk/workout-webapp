@@ -1,51 +1,54 @@
 import React from 'react'
-import css from 'strclass'
+import styled from 'styled-components'
 import {
-  Paper,
+  Paper as MaterialPaper,
   Table as MaterialTable,
+  TableCell as MaterialTableCell,
   TableBody,
-  TableCell,
   TableHead,
   TableRow,
-  withStyles
+  withTheme,
 } from '@material-ui/core'
 
-
-const MainTable = ({ classes, children }) => (
-  <Paper className={classes.paper}>
+const MainTable = ({ children }) => (
+  <Paper>
     <MaterialTable padding='checkbox'>
       {children}
     </MaterialTable>
   </Paper>
 )
 
-const StyledTable = withStyles({
-  paper: {
-    overflowX: 'auto'
+const Paper = styled(MaterialPaper)`
+  && {
+    overflow-x: auto;
   }
-})(MainTable)
+`
 
-const makeCell = (newTheme) => (
-  withStyles((theme) => ({
-    cell: newTheme(theme),
-
-    center: {
-      textAlign: 'center'
-    }
-  }))(({ classes, center, ...props }) => (
-    <TableCell {...props} className={css({ [classes.center]: center }, classes.cell)} />
-  ))
+const TableCell = ({ center, ...props }) => (
+  <StyledTableCell {...props} />
 )
 
-const Th = makeCell((theme) => ({
-  backgroundColor: theme.pallete.common.black,
-  color: theme.pallete.common.white
-}))
+const StyledTableCell = styled(MaterialTableCell)`
+  text-align: ${({ center }) => center ? 'center' : null}
+`
 
-const Td = makeCell(() => ({ fontSize: 14 }))
+const Th = withTheme()(
+  styled(TableCell)`
+    && {
+      background-color: ${({ theme }) => theme.pallete.common.black};
+      color: ${({ theme }) => theme.pallete.common.white};
+    }
+  `
+)
+
+const Td = styled(TableCell)`
+  && {
+    font-size: 14px;
+  }
+`
 
 export {
-  StyledTable as Table,
+  MainTable as Table,
   TableBody as TBody,
   TableHead as THead,
   TableRow as Tr,

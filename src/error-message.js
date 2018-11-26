@@ -1,31 +1,42 @@
 import React from 'react'
+import styled from 'styled-components'
 import MessageBox from './message-box'
-import { Typography, withStyles } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import Space from './space'
 
 const ErrorMessage = ({ classes }) => (
   <Space horizontal>
-    <MessageBox className={classes.error}>
-      <Typography variant='h6' component='h2'>Deu problema :(</Typography>
-      <Typography>Por favor, tente novamente mais tarde.</Typography>
-    </MessageBox>
+    <MessageBoxError>
+      <Title>Deu problema :(</Title>
+      <P>Por favor, tente novamente mais tarde.</P>
+    </MessageBoxError>
   </Space>
 )
 
-const styles = {
-  error: {
-    background: '#ffe0e0',
-    borderColor: '#e8aeae',
+const MessageBoxError = styled(MessageBox)`
+  background: #ffe0e0;
+  border-color: #e8aeae;
+`
 
-    '& h2, & p': {
-      margin: 0,
-      color: '#c12525',
-    },
+const styleForTitleAndP = `
+  margin: 0;
+  color: #c12525;
+`
 
-    '& p': {
-      marginTop: 10,
-    }
+const Title = styled(Typography).attrs({
+  variant: 'h6',
+  component: 'h2'
+})`
+  && {
+    ${styleForTitleAndP};
   }
-}
+`
 
-export default withStyles(styles)(ErrorMessage)
+const P = styled(Typography)`
+  && {
+    ${styleForTitleAndP};
+    margin-top: 10px;
+  }
+`
+
+export default ErrorMessage
