@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { get, set } from 'idb-keyval'
-import { http, to, lower } from './helpers'
+import xlsx from 'xlsx'
+import { lower } from '@helpers'
+import getTraining from './read-xlsx/get-training'
 
 export function useTraining () {
   const [training, setTraining] = useState(null)
@@ -45,19 +47,25 @@ export function useUpload ({ setTraining }) {
   const handleUpload = async (e) => {
     e.preventDefault()
     console.log('upload!')
+
     const file = e.target.files[0]
-    let data = new FormData()
-    data.append('file', file)
+    const reader = new FileReader()
 
     setError(false)
     setFetching(true)
-    const [err, training] = await to(
-      http.upload(process.env.REACT_APP_BACKEND, data)
-    )
-    setFetching(false)
 
-    if (err || !training || training.error) {
-      console.log('ERR:', err, training)
+    reader.onload = handleReaderOnload
+    reader.readAsBinaryString(file)
+  }
+
+  function handleReaderOnload (e) {
+    const data = e.target.result
+    const workbook = xlsx.read(data, { type: 'binary' })
+
+    setFetching(false)
+    const training = getTraining(workbook)
+    if (!training || training.error) {
+      console.log('ERR:', training)
       return setError(true)
     }
 

@@ -6,7 +6,7 @@ module.exports = function (paths) {
   return {
     'resolve.alias': {
       $set: {
-        '@helpers': join(__dirname, 'src', 'helpers')
+        '@helpers': join(__dirname, '..', 'src', 'helpers')
       }
     }
   }

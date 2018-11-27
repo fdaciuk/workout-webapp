@@ -10,13 +10,12 @@
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",
     "react-scripts": "2.0.5",
-    "styled-components": "^4.1.1"
+    "styled-components": "^4.1.1",
+    "xlsx": "^0.14.1"
   },
   "scripts": {
-    "old:dev": "react-scripts start",
-    "old:build": "react-scripts build",
-    "dev": "BROWSER=null cra-rewired -s react-scripts -m start -c webpack.custom.js",
-    "build": "cra-rewired -s react-scripts -m build -c webpack.custom.js",
+    "dev": "BROWSER=null cra-rewired -s react-scripts -m start -c config/webpack.custom.js",
+    "build": "cra-rewired -s react-scripts -m build -c config/webpack.custom.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
