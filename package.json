@@ -13,7 +13,7 @@
     "xlsx": "^0.14.1"
   },
   "scripts": {
-    "dev": "BROWSER=null cra-rewired -s react-scripts -m start -c config/webpack.custom.js",
+    "dev": "cra-rewired -s react-scripts -m start -c config/webpack.custom.js",
     "build": "cra-rewired -s react-scripts -m build -c config/webpack.custom.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
