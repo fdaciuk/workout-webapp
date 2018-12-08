@@ -848,11 +848,6 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@fdaciuk/ajax@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@fdaciuk/ajax/-/ajax-3.0.1.tgz#517a8f1ed8d421b544d935652ffa66edf9fa0b65"
-  integrity sha512-vYrsbizQ7xdID2V2FLPIH8UvvVkCRCGFcqcyk5CRzk1v7GjuGey6YSoK6hQTsU4sTLfJSh7bRbrU1gKbQF2Qow==
-
 "@material-ui/core@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.3.1.tgz#e4ecce8b56065364d2a937e845af63d720b696e8"
