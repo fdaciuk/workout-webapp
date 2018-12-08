@@ -8,13 +8,15 @@ const xlsx = async () => import('xlsx').then(x => x.default)
 export function useTraining () {
   const [training, setTraining] = useState(null)
 
-  useEffect(async () => {
-    console.log('Get training from cache')
-    const training = await get('training')
-    if (training) {
-      console.log('Set training from cache to state')
-      setTraining(training)
-    }
+  useEffect(() => {
+    ;(async () => {
+      console.log('Get training from cache')
+      const training = await get('training')
+      if (training) {
+        console.log('Set training from cache to state')
+        setTraining(training)
+      }
+    })()
   }, [])
 
   return { training, setTraining }
