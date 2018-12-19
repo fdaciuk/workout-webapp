@@ -56,10 +56,17 @@ const ListTraining = ({
               {t.exercicios.map((ex) => (
                 <Tr key={ex.exercicio}>
                   <Td padding='dense'>
-                    {ex.exercicio.split(/(\s\+\s)/).map((exerc) => {
-                      if (exerc === ' + ') {
+                    {!!getVideo(ex.exercicio.replace(/\s\s/g, ' ')) && (
+                      <a href={getVideo(ex.exercicio.replace(/\s\s/g, ' '))} rel='noopener noreferrer' target='_blank'>
+                        {ex.exercicio.replace(/\s\s/g, ' ')}
+                      </a>
+                    )}
+
+                    {!getVideo(ex.exercicio.replace(/\s\s/g, ' ')) && ex.exercicio.replace(/\s\s/g, ' ').split(/(\s(?:\+|ou)\s)/).map((exerc) => {
+                      if (exerc === ' + ' || exerc === ' ou ') {
                         return <span key={exerc}>{exerc}</span>
                       }
+
                       return (
                         <a key={exerc} href={getVideo(exerc)} rel='noopener noreferrer' target='_blank'>
                           {exerc}

@@ -24,7 +24,7 @@ const Tabs = React.lazy(() => import('./tabs'))
 const ListTraining = React.lazy(() => import('./list-training'))
 const ModalAdvancedTechnique = React.lazy(() => import('./modal-advanced-technique'))
 const Aerobic = React.lazy(() => import('./aerobic'))
-const Space = React.lazy(() => import('./space'))
+const Spaced = React.lazy(() => import('./spaced'))
 
 const App = () => {
   const { training, setTraining } = useTraining()
@@ -41,7 +41,7 @@ const App = () => {
         <CssBaseline />
 
         {isOnline && (
-          <Space horizontal vertical>
+          <Spaced horizontal vertical>
             <TextField
               fullWidth
               type='file'
@@ -50,7 +50,7 @@ const App = () => {
               label='Selecione seu treino (arquivo .xlsx):'
               InputLabelProps={{ shrink: true }}
             />
-          </Space>
+          </Spaced>
         )}
 
         <Suspense fallback=''>
@@ -58,7 +58,7 @@ const App = () => {
           {isFetching && <FetchingMessage />}
           {error && <ErrorMessage />}
 
-          {training && <Space horizontal><MainTitle>{training.foco}</MainTitle></Space>}
+          {training && <Spaced horizontal><MainTitle>{training.foco}</MainTitle></Spaced>}
 
           {training && <Tabs training={training} tab={tab} setTab={setTab} />}
 

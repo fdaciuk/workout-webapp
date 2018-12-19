@@ -1,7 +1,7 @@
 import React from 'react'
 import Subtitle from './subtitle'
 import { Table, TBody, Tr, Th, Td } from './table'
-import Space from './space'
+import Space from './spaced'
 
 const Aerobic = ({ days }) => (
   <Space horizontal>
