@@ -134,7 +134,7 @@ function getTechniqueText (technique) {
           <A href='http://www.malhandocerto.com/wp-content/uploads/2013/08/alongamento-dorsal-peitoral.jpg'>Dorsal</A>, {' '}
           <A href='http://www.musculacao.net/wp-content/uploads/2013/08/alongamento-deltoide-posterior1.jpg'>Deltoides</A>, {' '}
           <A href='http://www.musculacao.net/wp-content/uploads/2013/08/alongamento-pesco%C3%A7o-e-trap%C3%A9zio.jpg'>Trapézio</A>, {' '}
-          <A href='http://www.malhandocerto.com/wp-content/uploads/2013/08/alongar-triceps.jpg'>Tríceps</A>, {' '}
+          <A href='https://i.pinimg.com/originals/f7/a7/ba/f7a7baf162738f9159e3837836f8842e.jpg'>Tríceps</A>, {' '}
           <A href='http://www.musculacao.net/wp-content/uploads/2013/08/Alongamento-b%C3%ADceps1.jpg'>Bíceps</A>, {' '}
           <A href='http://www.iot.com.br/wp-content/uploads/2016/08/IOT-Exercicios-0116.jpg'>Antebraço</A>, {' '}
           <A href='https://adoroesporte.files.wordpress.com/2010/12/iii.jpg'>Quadríceps</A>, {' '}
