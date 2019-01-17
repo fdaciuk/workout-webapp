@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
 import App from './app'
+import ErrorBoundary from './error'
 import * as serviceWorker from './serviceWorker'
+
 
 const theme = createMuiTheme({
   typography: {
@@ -18,9 +20,11 @@ const theme = createMuiTheme({
 })
 
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <App />
-  </MuiThemeProvider>
+  <ErrorBoundary>
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
+  </ErrorBoundary>
 , document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
