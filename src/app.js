@@ -73,14 +73,18 @@ const App = () => {
           )}
 
           {training && training.aerobic && tab === 1 && (
-            <Aerobic days={training.aerobic} />
+            <Suspense fallback=''>
+              <Aerobic days={training.aerobic} />
+            </Suspense>
           )}
 
           {advancedTechnique && (
-            <ModalAdvancedTechnique
-              technique={advancedTechnique}
-              closeModal={closeModal}
-            />
+            <Suspense fallback=''>
+              <ModalAdvancedTechnique
+                technique={advancedTechnique}
+                closeModal={closeModal}
+              />
+              </Suspense>
           )}
         </Suspense>
       </Suspense>
