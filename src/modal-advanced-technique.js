@@ -130,18 +130,18 @@ function getTechniqueText (technique) {
         <P>
           Os alongamentos podem ser feitos 15s de cada lado. Clique no músculo
           pra ver o alongamento: {' '}
-          <A href='http://www.malhandocerto.com/wp-content/uploads/2013/08/alongamento-peitoral.jpg'>Peitoral</A>,
-          <A href='http://www.malhandocerto.com/wp-content/uploads/2013/08/alongamento-dorsal-peitoral.jpg'>Dorsal</A>, {' '}
-          <A href='http://www.musculacao.net/wp-content/uploads/2013/08/alongamento-deltoide-posterior1.jpg'>Deltoides</A>, {' '}
-          <A href='http://www.musculacao.net/wp-content/uploads/2013/08/alongamento-pesco%C3%A7o-e-trap%C3%A9zio.jpg'>Trapézio</A>, {' '}
-          <A href='https://i.pinimg.com/originals/f7/a7/ba/f7a7baf162738f9159e3837836f8842e.jpg'>Tríceps</A>, {' '}
-          <A href='http://www.musculacao.net/wp-content/uploads/2013/08/Alongamento-b%C3%ADceps1.jpg'>Bíceps</A>, {' '}
-          <A href='http://www.iot.com.br/wp-content/uploads/2016/08/IOT-Exercicios-0116.jpg'>Antebraço</A>, {' '}
-          <A href='https://adoroesporte.files.wordpress.com/2010/12/iii.jpg'>Quadríceps</A>, {' '}
-          <A href='http://www.malhandocerto.com/wp-content/uploads/2013/08/alongar-lombar.jpg'>Posterior de Coxa</A>, {' '}
-          <A href='http://www.musculacao.net/wp-content/uploads/2013/08/Alongamento-gl%C3%BAteos.jpg'>Glúteos</A>, {' '}
-          <A href='http://3.bp.blogspot.com/-uzwsxoVCmXg/UOMQM2uJjGI/AAAAAAAABzk/ANMdB0idM7o/s1600/DSC_0123.JPG'>Adutores</A>, {' '}
-          <A href='http://www.musculacao.net/wp-content/uploads/2014/03/Alongamento-gastrocnemio.jpg'>Panturrilhas</A>.
+          <A href='/images/fst7/alongamento-peitoral.jpg'>Peitoral</A>,
+          <A href='/images/fst7/alongamento-dorsal-peitoral.jpg'>Dorsal</A>, {' '}
+          <A href='/images/fst7/alongamento-deltoide-posterior1.jpg'>Deltoides</A>, {' '}
+          <A href='/images/fst7/alongamento-pesco%C3%A7o-e-trap%C3%A9zio.jpg'>Trapézio</A>, {' '}
+          <A href='/images/fst7/f7a7baf162738f9159e3837836f8842e.jpg'>Tríceps</A>, {' '}
+          <A href='/images/fst7/Alongamento-b%C3%ADceps1.jpg'>Bíceps</A>, {' '}
+          <A href='/images/fst7/IOT-Exercicios-0116.jpg'>Antebraço</A>, {' '}
+          <A href='/images/fst7/iii.jpg'>Quadríceps</A>, {' '}
+          <A href='/images/fst7/alongar-lombar.jpg'>Posterior de Coxa</A>, {' '}
+          <A href='/images/fst7/Alongamento-gl%C3%BAteos.jpg'>Glúteos</A>, {' '}
+          <A href='/images/fst7/DSC_0123.JPG'>Adutores</A>, {' '}
+          <A href='/images/fst7/Alongamento-gastrocnemio.jpg'>Panturrilhas</A>.
         </P>
       </Fragment>
     ),
