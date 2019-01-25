@@ -103,7 +103,7 @@ const ListTraining = ({
 
 const ExpansionPanel = styled(MaterialExpansionPanel)`
   && {
-    background: ${(props) => props['data-today'] === props['data-day'] ? '#ededed' : null};
+    background: ${(props) => props['data-today'] === props['data-day'] ? '#ffebb2' : null};
   }
 `
 
