@@ -14,7 +14,7 @@ import {
   useWeekDay
 } from './hooks'
 
-import { getVideo } from '@helpers'
+import { getVideo, breakIntoORWordOrPlusSign } from '@helpers'
 
 const OfflineMessage = React.lazy(() => import('./offline-message'))
 const FetchingMessage = React.lazy(() => import('./fetching-message'))
@@ -31,7 +31,7 @@ const App = () => {
   const { isOnline } = useOnlineOfflineChecker()
   const { isFetching, error, handleUpload } = useUpload({ setTraining })
   const { advancedTechnique, openAdvancedTechnique, closeModal } = useTechnique()
-  const { weekDay, handleSetWeekDay } = useWeekDay()
+  const { today, weekDay, handleSetWeekDay } = useWeekDay()
 
   const [tab, setTab] = useState(0)
 
@@ -67,6 +67,8 @@ const App = () => {
               training={training}
               openAdvancedTechnique={openAdvancedTechnique}
               getVideo={getVideo}
+              breakIntoORWordOrPlusSign={breakIntoORWordOrPlusSign}
+              today={today}
               weekDay={weekDay}
               setWeekDay={handleSetWeekDay}
             />

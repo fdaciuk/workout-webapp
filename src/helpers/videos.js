@@ -3,6 +3,17 @@ function getVideo (exercise) {
   return videos[ex]
 }
 
+function breakIntoORWordOrPlusSign (exercise) {
+  const exerciseWithoutMoreThanOneSpace = exercise.replace(/\s\s/g, ' ')
+  const breakOnPlusSign = exerciseWithoutMoreThanOneSpace.split(/(\s(?:\+)\s)/)
+  if (breakOnPlusSign.length > 1) {
+    return breakOnPlusSign
+  }
+
+  const breakOnORWord = exerciseWithoutMoreThanOneSpace.split(/(\sou\s)/)
+  return breakOnORWord
+}
+
 const videos = {
   'Supino Reto Barra': 'https://www.youtube.com/watch?v=R8P8ltM6R8s',
   'Supino Reto Halteres': 'https://www.youtube.com/watch?v=l4ffhu6yvPU',
@@ -177,7 +188,7 @@ const videos = {
   'Extensão Lombar': 'https://www.youtube.com/watch?v=Vu9vg40C_Ew'
 }
 
-export { getVideo }
+export { getVideo, breakIntoORWordOrPlusSign }
 
 // // >>> Página buscada:
 // // >>> https://www.leandrotwin.com.br/assessoria/listadeexecicios.php

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import {
   Typography,
-  ExpansionPanel,
+  ExpansionPanel as MaterialExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails as MaterialExpansionPanelDetails,
   Button,
@@ -19,6 +19,8 @@ const ListTraining = ({
   training,
   openAdvancedTechnique,
   getVideo,
+  breakIntoORWordOrPlusSign,
+  today,
   weekDay,
   setWeekDay,
 }) => (
@@ -27,6 +29,8 @@ const ListTraining = ({
       <ExpansionPanel
         key={t.treino}
         expanded={weekDay === lower(t.weekDay)}
+        data-today={today}
+        data-day={lower(t.weekDay)}
       >
         <ExpansionPanelSummary
           expandIcon={<ExpandMore />}
@@ -62,7 +66,7 @@ const ListTraining = ({
                       </a>
                     )}
 
-                    {!getVideo(ex.exercicio.replace(/\s\s/g, ' ')) && ex.exercicio.replace(/\s\s/g, ' ').split(/(\s(?:\+|ou)\s)/).map((exerc) => {
+                    {!getVideo(ex.exercicio.replace(/\s\s/g, ' ')) && breakIntoORWordOrPlusSign(ex.exercicio).map((exerc) => {
                       if (exerc === ' + ' || exerc === ' ou ') {
                         return <span key={exerc}>{exerc}</span>
                       }
@@ -96,6 +100,12 @@ const ListTraining = ({
     ))}
   </Fragment>
 )
+
+const ExpansionPanel = styled(MaterialExpansionPanel)`
+  && {
+    background: ${(props) => props['data-today'] === props['data-day'] ? '#ededed' : null};
+  }
+`
 
 const ExpansionPanelDetails = styled(MaterialExpansionPanelDetails)`
   && {

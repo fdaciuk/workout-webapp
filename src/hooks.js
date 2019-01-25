@@ -106,6 +106,7 @@ export function useWeekDay () {
     'sábado'
   ]
   const [weekDay, setWeekDay] = useState(null)
+  const [today, setToday] = useState(null)
 
   const isTheSame = (a, b) => a === b
 
@@ -120,8 +121,10 @@ export function useWeekDay () {
 
   useEffect(() => {
     const date = new Date()
-    setWeekDay(weekDays[date.getDay()])
+    const today = weekDays[date.getDay()]
+    setWeekDay(today)
+    setToday(today)
   }, [])
 
-  return { weekDay, handleSetWeekDay }
+  return { today , weekDay, handleSetWeekDay }
 }
