@@ -14,7 +14,7 @@ import {
   useWeekDay
 } from './hooks'
 
-import { getVideo, breakIntoORWordOrPlusSign } from '@helpers'
+import { getVideo, breakIntoORWordOrPlusSign } from 'helpers'
 
 const OfflineMessage = React.lazy(() => import('./offline-message'))
 const FetchingMessage = React.lazy(() => import('./fetching-message'))

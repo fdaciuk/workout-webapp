@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { get, set } from 'idb-keyval'
-import { lower } from '@helpers'
+import { lower } from 'helpers'
 import getTraining from './read-xlsx/get-training'
 
 const xlsx = async () => import('xlsx').then(x => x.default)
