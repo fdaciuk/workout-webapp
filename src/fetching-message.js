@@ -4,7 +4,7 @@ import MessageBox from './message-box'
 import { Typography } from '@material-ui/core'
 import Space from './spaced'
 
-const FetchingMessage = ({ classes }) => (
+const FetchingMessage = () => (
   <Space horizontal>
     <MessageBoxFetching>
       <Typography>

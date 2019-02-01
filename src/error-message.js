@@ -4,7 +4,7 @@ import MessageBox from './message-box'
 import { Typography } from '@material-ui/core'
 import Space from './spaced'
 
-const ErrorMessage = ({ classes }) => (
+const ErrorMessage = () => (
   <Space horizontal>
     <MessageBoxError>
       <Title>Deu problema :(</Title>

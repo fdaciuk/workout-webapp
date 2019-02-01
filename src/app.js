@@ -86,7 +86,7 @@ const App = () => {
                 technique={advancedTechnique}
                 closeModal={closeModal}
               />
-              </Suspense>
+            </Suspense>
           )}
         </Suspense>
       </Suspense>

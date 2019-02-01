@@ -13,12 +13,24 @@
     "xlsx": "0.14.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "dev": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "lint:fix": "standard --fix"
   },
   "eslintConfig": {
-    "extends": "standard"
+    "extends": [
+      "react-app",
+      "standard",
+      "standard-react"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "fetch",
+      "FileReader"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -27,12 +39,15 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@rescripts/cli": "0.0.10",
+    "@rescripts/rescript-env": "0.0.5",
     "eslint-config-standard": "12.0.0",
     "eslint-config-standard-react": "7.0.2",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-node": "8.0.1",
     "eslint-plugin-promise": "4.0.1",
     "eslint-plugin-react": "7.12.4",
-    "eslint-plugin-standard": "4.0.0"
+    "eslint-plugin-standard": "4.0.0",
+    "standard": "12.0.1"
   }
 }

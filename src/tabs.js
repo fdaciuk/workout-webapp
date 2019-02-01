@@ -1,4 +1,5 @@
 import React from 'react'
+import t from 'prop-types'
 import styled from 'styled-components'
 import {
   AppBar as MaterialAppBar,
@@ -6,7 +7,7 @@ import {
   Tab
 } from '@material-ui/core'
 
-const Tabs = ({ classes, tab, setTab }) => (
+const Tabs = ({ tab, setTab }) => (
   <AppBar>
     <MaterialTabs value={tab}>
       <Tab label='Treinos' onClick={() => setTab(0)} />
@@ -14,6 +15,11 @@ const Tabs = ({ classes, tab, setTab }) => (
     </MaterialTabs>
   </AppBar>
 )
+
+Tabs.propTypes = {
+  tab: t.number.isRequired,
+  setTab: t.func.isRequired
+}
 
 const AppBar = styled(MaterialAppBar).attrs({ position: 'static' })`
   && {

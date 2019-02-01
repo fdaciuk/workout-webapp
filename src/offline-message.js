@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
 import { WifiOff } from '@material-ui/icons'
 
-const OfflineMessage = ({ classes }) => (
+const OfflineMessage = () => (
   <OfflineContainer>
     <WifiOff />
     Você está offline

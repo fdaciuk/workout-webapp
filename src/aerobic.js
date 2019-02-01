@@ -1,4 +1,5 @@
 import React from 'react'
+import t from 'prop-types'
 import Subtitle from './subtitle'
 import { Table, TBody, Tr, Th, Td } from './table'
 import Space from './spaced'
@@ -21,5 +22,9 @@ const Aerobic = ({ days }) => (
     </Table>
   </Space>
 )
+
+Aerobic.propTypes = {
+  days: t.object.isRequired
+}
 
 export default Aerobic

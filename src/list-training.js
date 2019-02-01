@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react'
+import t from 'prop-types'
 import styled from 'styled-components'
 import {
   Typography,
   ExpansionPanel as MaterialExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails as MaterialExpansionPanelDetails,
-  Button,
+  Button
 } from '@material-ui/core'
 import {
   // OndemandVideo,
@@ -22,7 +23,7 @@ const ListTraining = ({
   breakIntoORWordOrPlusSign,
   today,
   weekDay,
-  setWeekDay,
+  setWeekDay
 }) => (
   <Fragment>
     {training.treino.map((t) => (
@@ -100,6 +101,16 @@ const ListTraining = ({
     ))}
   </Fragment>
 )
+
+ListTraining.propTypes = {
+  training: t.object.isRequired,
+  openAdvancedTechnique: t.func.isRequired,
+  getVideo: t.func.isRequired,
+  breakIntoORWordOrPlusSign: t.func.isRequired,
+  today: t.string.isRequired,
+  weekDay: t.string,
+  setWeekDay: t.func.isRequired
+}
 
 const ExpansionPanel = styled(MaterialExpansionPanel)`
   && {

@@ -1,8 +1,9 @@
 import React from 'react'
+import t from 'prop-types'
 import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
 
-const MainTitle = ({ children = '', classes }) => {
+const MainTitle = ({ children = '' }) => {
   const [training, focus] = separateFocus(children)
   return (
     <Title>
@@ -10,6 +11,10 @@ const MainTitle = ({ children = '', classes }) => {
       {focus && <Block>Foco: {firstUpper(focus)}</Block>}
     </Title>
   )
+}
+
+MainTitle.propTypes = {
+  children: t.node.isRequired
 }
 
 const Block = styled.span`
@@ -33,6 +38,5 @@ function firstUpper (string) {
 function separateFocus (string) {
   return string.split(/\sfoco\s/gi)
 }
-
 
 export default MainTitle

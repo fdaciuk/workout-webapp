@@ -5,7 +5,6 @@ import App from './app'
 import ErrorBoundary from './error'
 import * as serviceWorker from './serviceWorker'
 
-
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true
@@ -25,7 +24,9 @@ ReactDOM.render(
       <App />
     </MuiThemeProvider>
   </ErrorBoundary>
-, document.getElementById('root'))
+  ,
+  document.getElementById('root')
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

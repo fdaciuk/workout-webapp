@@ -1,9 +1,14 @@
 import React, { Fragment, PureComponent } from 'react'
+import t from 'prop-types'
 
 class ErrorBoundary extends PureComponent {
   state = {
     hasError: false,
     error: null
+  }
+
+  static propTypes = {
+    children: t.node.isRequired
   }
 
   static getDerivedStateFromError (error) {

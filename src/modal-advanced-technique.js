@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
+import t from 'prop-types'
 import {
   Dialog,
   DialogTitle,
   DialogContent,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import CloseButton from './close-button'
 
@@ -12,7 +13,7 @@ const ModalAdvancedTechnique = ({ technique, closeModal }) => {
 
   return (
     <Dialog
-      open={true}
+      open
       onClose={closeModal}
       scroll='paper'
       aria-labelledby='scroll-dialog-title'
@@ -26,9 +27,19 @@ const ModalAdvancedTechnique = ({ technique, closeModal }) => {
   )
 }
 
+ModalAdvancedTechnique.propTypes = {
+  technique: t.string.isRequired,
+  closeModal: t.func.isRequired
+}
+
 const A = ({ href, children }) => (
   <a href={href} rel='noopener noreferrer' target='_blank'>{children || href}</a>
 )
+
+A.propTypes = {
+  href: t.string.isRequired,
+  children: t.node
+}
 
 function getTechniqueText (technique) {
   const techniques = {

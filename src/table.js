@@ -1,4 +1,5 @@
 import React from 'react'
+import t from 'prop-types'
 import styled from 'styled-components'
 import {
   Paper as MaterialPaper,
@@ -7,7 +8,7 @@ import {
   TableBody,
   TableHead,
   TableRow,
-  withTheme,
+  withTheme
 } from '@material-ui/core'
 
 const MainTable = ({ children }) => (
@@ -18,6 +19,10 @@ const MainTable = ({ children }) => (
   </Paper>
 )
 
+MainTable.propTypes = {
+  children: t.node.isRequired
+}
+
 const Paper = styled(MaterialPaper)`
   && {
     overflow-x: auto;
@@ -27,6 +32,10 @@ const Paper = styled(MaterialPaper)`
 const TableCell = ({ center, ...props }) => (
   <StyledTableCell {...props} />
 )
+
+TableCell.propTypes = {
+  center: t.bool
+}
 
 const StyledTableCell = styled(MaterialTableCell)`
   text-align: ${({ center }) => center ? 'center' : null}

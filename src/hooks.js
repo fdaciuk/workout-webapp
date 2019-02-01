@@ -126,5 +126,5 @@ export function useWeekDay () {
     setToday(today)
   }, [])
 
-  return { today , weekDay, handleSetWeekDay }
+  return { today, weekDay, handleSetWeekDay }
 }
