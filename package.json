@@ -25,6 +25,9 @@
       "standard-react"
     ]
   },
+  "rescripts": [
+    "env"
+  ],
   "standard": {
     "parser": "babel-eslint",
     "globals": [
