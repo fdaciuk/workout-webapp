@@ -54,7 +54,9 @@ const App = () => {
         )}
 
         <Suspense fallback=''>
-          {!isOnline && <OfflineMessage />}
+          <Suspense fallback=''>
+            {!isOnline && <OfflineMessage />}
+          </Suspense>
           {isFetching && <FetchingMessage />}
           {error && <ErrorMessage />}
 
