@@ -23,7 +23,7 @@ export function useTraining () {
 }
 
 export function useOnlineOfflineChecker () {
-  const [isOnline, setIsOnline] = useState(navigator.onLine)
+  const [isOnline, setIsOnline] = useState(() => navigator.onLine)
 
   useEffect(() => {
     console.log('check online / offline connections')
