@@ -22,7 +22,8 @@ const ErrorMessage = React.lazy(() => import('./error-message'))
 const MainTitle = React.lazy(() => import('./main-title'))
 const Tabs = React.lazy(() => import('./tabs'))
 const ListTraining = React.lazy(() => import('./list-training'))
-const ModalAdvancedTechnique = React.lazy(() => import('./modal-advanced-technique'))
+const ModalAdvancedTechnique = React.lazy(() =>
+  import('./modal-advanced-technique'))
 const Aerobic = React.lazy(() => import('./aerobic'))
 const Spaced = React.lazy(() => import('./spaced'))
 
@@ -30,7 +31,11 @@ const App = () => {
   const { training, setTraining } = useTraining()
   const { isOnline } = useOnlineOfflineChecker()
   const { isFetching, error, handleUpload } = useUpload({ setTraining })
-  const { advancedTechnique, openAdvancedTechnique, closeModal } = useTechnique()
+  const {
+    advancedTechnique,
+    openAdvancedTechnique,
+    closeModal
+  } = useTechnique()
   const { today, weekDay, handleSetWeekDay } = useWeekDay()
 
   const [tab, setTab] = useState(0)
