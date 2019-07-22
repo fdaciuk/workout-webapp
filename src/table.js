@@ -7,8 +7,7 @@ import {
   TableCell as MaterialTableCell,
   TableBody,
   TableHead,
-  TableRow,
-  withTheme
+  TableRow
 } from '@material-ui/core'
 
 const MainTable = ({ children }) => (
@@ -41,14 +40,12 @@ const StyledTableCell = styled(MaterialTableCell)`
   text-align: ${({ center }) => center ? 'center' : null}
 `
 
-const Th = withTheme()(
-  styled(TableCell)`
-    && {
-      background-color: ${({ theme }) => theme.pallete.common.black};
-      color: ${({ theme }) => theme.pallete.common.white};
-    }
-  `
-)
+const Th = styled(TableCell)`
+  && {
+    background-color: ${({ theme }) => theme.palette.common.black};
+    color: ${({ theme }) => theme.palette.common.white};
+  }
+`
 
 const Td = styled(TableCell)`
   && {
