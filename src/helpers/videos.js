@@ -32,6 +32,7 @@ const videos = {
   'Cross-Over Polia Baixa': 'https://youtu.be/Jy_hZnK-_lo',
   'Flexão De Braço': 'https://youtu.be/F9FC_KBsLpY',
   'Peck Deck ou Crucifixo Na Máquina': 'https://youtu.be/Ru9OVOUlp0U',
+  'Peck Deck \\ Crucifixo Na Máquina': 'https://youtu.be/Ru9OVOUlp0U',
   'Barra Fixa Peg Pronada': 'https://youtu.be/JX_YM7Bp26U',
   'Barra Fixa Peg Supinada': 'https://youtu.be/WJOu_aru3XM',
   'Barra Fixa Com Triângulo': 'https://youtu.be/uCnmHgHgfOs',
