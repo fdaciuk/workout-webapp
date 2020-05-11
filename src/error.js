@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import t from 'prop-types'
 
 class ErrorBoundary extends PureComponent {
@@ -21,12 +21,12 @@ class ErrorBoundary extends PureComponent {
   render () {
     if (this.state.hasError) {
       return (
-        <Fragment>
+        <>
           <h1>Deu problema :(</h1>
           <details>
             <pre>{this.state.error}</pre>
           </details>
-        </Fragment>
+        </>
       )
     }
 

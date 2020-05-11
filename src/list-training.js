@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import t from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -25,7 +25,7 @@ const ListTraining = ({
   weekDay,
   setWeekDay
 }) => (
-  <Fragment>
+  <>
     {training.treino.map((t) => (
       <ExpansionPanel
         key={t.treino}
@@ -99,7 +99,7 @@ const ListTraining = ({
         </ExpansionPanelDetails>
       </ExpansionPanel>
     ))}
-  </Fragment>
+  </>
 )
 
 ListTraining.propTypes = {

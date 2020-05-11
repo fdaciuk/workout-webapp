@@ -93,8 +93,8 @@ const videos = {
   'Remada Alta Barra': 'https://youtu.be/Z6jSLKXZ0Ag',
   'Remada Alta Cross': 'https://youtu.be/dHjEyNaCmn0',
   'Remada Alta Smith': 'https://youtu.be/lD_zvmzP1K0',
-  'Paralelas': 'https://youtu.be/8ZhWzT-V54Q',
-  'Mergulho': 'https://youtu.be/jAkRzFnEvSo',
+  Paralelas: 'https://youtu.be/8ZhWzT-V54Q',
+  Mergulho: 'https://youtu.be/jAkRzFnEvSo',
   'Supino Fechado': 'https://youtu.be/qJGw6CnVh2Q',
   'Rosca Testa Barra Peg Pronada': 'https://youtu.be/orMEOzQjiAs',
   'Rosca Testa Barra Peg Supinada': 'https://youtu.be/D_wnqWbIrYs',
@@ -183,10 +183,10 @@ const videos = {
   'Gêmeos Sentado Smith': 'https://youtu.be/iK6cVWR3-jI',
   'Gêmeos Sentado Livre': 'https://youtu.be/CiFlAqIx-lY',
   'Gêmeos Leg Press': 'https://youtu.be/omdVB4rQnoQ',
-  'Supra': 'https://youtu.be/N5SL7rhM07c',
-  'Infra': 'https://youtu.be/8slFJ9J31lM',
-  'Oblíquos': 'https://youtu.be/k9rfQiXoM1w',
-  'Prancha': 'https://youtu.be/TxadpmTHK08',
+  Supra: 'https://youtu.be/N5SL7rhM07c',
+  Infra: 'https://youtu.be/8slFJ9J31lM',
+  Oblíquos: 'https://youtu.be/k9rfQiXoM1w',
+  Prancha: 'https://youtu.be/TxadpmTHK08',
   'Extensão Lombar': 'https://youtu.be/Jto980puQ3c'
 }
 export { getVideo, breakIntoORWordOrPlusSign }

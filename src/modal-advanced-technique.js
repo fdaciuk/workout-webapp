@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import t from 'prop-types'
 import {
   Dialog,
@@ -44,7 +44,7 @@ A.propTypes = {
 function getTechniqueText (technique) {
   const techniques = {
     'Bi-Set': () => (
-      <Fragment>
+      <>
         <P>
           Consiste em fazer dois exercícios do mesmo grupo muscular sem
           descanso entre. Após a execução dos dois se faz um descanso conforme na
@@ -66,11 +66,11 @@ function getTechniqueText (technique) {
         <P>
           Vídeo: <A href='https://youtu.be/KGZhG9LGWsU' />
         </P>
-      </Fragment>
+      </>
     ),
 
     'Drop-Set': () => (
-      <Fragment>
+      <>
         <P>
           Apenas executado na última série. Ao falhar se abaixa o peso em cerca de
           20 a 30% e se leva até a falha novamente, não importando quantas
@@ -91,11 +91,11 @@ function getTechniqueText (technique) {
         <P>
           Vídeo: <A href='https://youtu.be/r4rxW8sqpNo' />
         </P>
-      </Fragment>
+      </>
     ),
 
     'Rest \'n\' Pause': () => (
-      <Fragment>
+      <>
         <P>
           Aplicado apenas na última série. Ao se falhar na última série se da um
           descanso de 5 a 15 segundos e se executa novamente, com o mesmo peso,
@@ -120,11 +120,11 @@ function getTechniqueText (technique) {
         <P>
           Vídeo: <A href='https://youtu.be/30PA_tBg-_8' />
         </P>
-      </Fragment>
+      </>
     ),
 
     'FST-7': () => (
-      <Fragment>
+      <>
         <P>
           Se executa 7 séries com as repetições estipuladas na tabela com intervalo
           de 30 segundos entre as séries. Durante esse intervalo é feito um
@@ -154,10 +154,10 @@ function getTechniqueText (technique) {
           <A href='/images/fst7/DSC_0123.JPG'>Adutores</A>, {' '}
           <A href='/images/fst7/Alongamento-gastrocnemio.jpg'>Panturrilhas</A>.
         </P>
-      </Fragment>
+      </>
     ),
 
-    'GVT': () => (
+    GVT: () => (
       <P>
         O GVT é uma técnica de séries massivas para desenvolvimento muscular.
         Executa-se 10 séries de um determinado exercício com descanso de 60 a

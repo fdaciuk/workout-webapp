@@ -124,7 +124,7 @@ export function useWeekDay () {
     const today = weekDays[date.getDay()]
     setWeekDay(today)
     setToday(today)
-  }, [])
+  }, [weekDays])
 
   return { today, weekDay, handleSetWeekDay }
 }

@@ -6,20 +6,14 @@
     "dev": "rescripts start",
     "build": "rescripts build",
     "test": "rescripts test",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix | snazzy"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "standard",
       "standard-react"
-    ],
-    "plugins": [
-      "react-hooks"
-    ],
-    "rules": {
-      "react-hooks/rules-of-hooks": "error"
-    }
+    ]
   },
   "rescripts": [
     "env"
@@ -38,26 +32,26 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@material-ui/core": "3.9.2",
-    "@material-ui/icons": "3.0.2",
-    "idb-keyval": "3.1.0",
-    "react": "16.8.5",
-    "react-dom": "16.8.5",
-    "react-scripts": "2.1.8",
-    "styled-components": "4.2.0",
-    "xlsx": "0.14.1"
+    "@material-ui/core": "4.6.1",
+    "@material-ui/icons": "4.5.1",
+    "idb-keyval": "3.2.0",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "react-scripts": "3.2.0",
+    "styled-components": "4.4.1",
+    "xlsx": "0.15.1"
   },
   "devDependencies": {
-    "@rescripts/cli": "0.0.10",
-    "@rescripts/rescript-env": "0.0.5",
-    "eslint-config-standard": "12.0.0",
-    "eslint-config-standard-react": "7.0.2",
-    "eslint-plugin-import": "2.16.0",
-    "eslint-plugin-node": "8.0.1",
-    "eslint-plugin-promise": "4.0.1",
-    "eslint-plugin-react": "7.12.4",
-    "eslint-plugin-react-hooks": "1.0.2",
-    "eslint-plugin-standard": "4.0.0",
-    "standard": "12.0.1"
+    "@rescripts/cli": "0.0.13",
+    "@rescripts/rescript-env": "0.0.11",
+    "eslint-config-standard": "14.1.0",
+    "eslint-config-standard-react": "9.2.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.16.0",
+    "eslint-plugin-standard": "4.0.1",
+    "snazzy": "^8.0.0",
+    "standard": "14.3.1"
   }
 }
