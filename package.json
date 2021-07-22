@@ -45,7 +45,7 @@
     "react-dom": "16.8.5",
     "react-scripts": "2.1.8",
     "styled-components": "4.2.0",
-    "xlsx": "0.14.1"
+    "xlsx": "0.17.0"
   },
   "devDependencies": {
     "@rescripts/cli": "0.0.10",
